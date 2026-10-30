@@ -131,3 +131,8 @@ body{background:#f5f3f7;color:var(--mosaic-ink);font-family:Arial,system-ui,sans
 .mosaic-welcome.tema-jigoro{background:linear-gradient(180deg,#efefef 0%,#f1f1f1 50%,#e3e3e3 100%)}
 .mosaic-welcome.tema-jigoro h2{color:#1d1d1d}
 .mosaic-welcome.tema-jigoro p{color:#6b6b6b}
+/* Wild: a parede de tábuas de madeira da foto (#a85e31 no alto, #bd7239, #b05a24, #934d21,
+   #773916 descendo pela borda direita); as tábuas continuam em listras horizontais. */
+.mosaic-welcome.tema-wild{background:repeating-linear-gradient(180deg,transparent 0 17px,#5a2a0e33 17px 18px,transparent 18px 31px,#f3b07a1f 31px 33px,transparent 33px 46px),linear-gradient(180deg,#a85e31 0%,#bd7239 20%,#b05a24 38%,#934d21 60%,#773916 100%)}
+.mosaic-welcome.tema-wild h2{color:#fff8ef;font-size:30px;text-shadow:0 2px 10px #3a1a0699}
+@media(max-width:700px){.mosaic-welcome.tema-wild h2{font-size:19px}}

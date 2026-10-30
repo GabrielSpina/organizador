@@ -12,6 +12,8 @@ const BANNERS=[
   // Itens novos entram no FIM: a escolha salva é a posição na lista.
   {tema:'charlie',foto:'imagens/charlie.jpg',alt:'Charles do Bronx',frase:'É tempo ruim o tempo todo',autor:'Charles do Bronx'},
   {tema:'jigoro',foto:'imagens/jigoro_kano.jpg',alt:'Jigoro Kano',frase:'Conhecer-se é dominar-se, dominar-se é triunfar.',autor:'Jigoro Kano'},
+  // Citação sem "autor": só a frase, entre aspas.
+  {tema:'wild',foto:'imagens/wild.jpg',alt:'Gabriel',frase:'Quem não morre, não vê Deus'},
 ];
 const BANNER_KEY='organizador.banner.v1';
 let bannerAtual=Math.min(Math.max(Number(localStorage.getItem(BANNER_KEY))||0,0),BANNERS.length-1);
@@ -35,7 +37,7 @@ function mostrarBanner(){
   clearInterval(relogioContagem);relogioContagem=null;
   const b=BANNERS[bannerAtual];
   mosaicWelcome.className='mosaic-welcome com-foto tema-'+b.tema;
-  mosaicWelcome.innerHTML=`<img class="mosaic-photo" src="${b.foto}" alt="${esc(b.alt)}">${b.frase?`<blockquote class="mosaic-quote"><h2>“${esc(b.frase)}”</h2><p>— ${esc(b.autor)}</p></blockquote>`:`<div class="mosaic-titulo"><h2>${esc(b.titulo)}</h2>${b.contagem?'<div class="mosaic-contagem" aria-live="off"></div>':''}</div>`}<div class="mosaic-welcome-shape" aria-hidden="true" hidden></div>`;
+  mosaicWelcome.innerHTML=`<img class="mosaic-photo" src="${b.foto}" alt="${esc(b.alt)}">${b.frase?`<blockquote class="mosaic-quote"><h2>“${esc(b.frase)}”</h2>${b.autor?`<p>— ${esc(b.autor)}</p>`:''}</blockquote>`:`<div class="mosaic-titulo"><h2>${esc(b.titulo)}</h2>${b.contagem?'<div class="mosaic-contagem" aria-live="off"></div>':''}</div>`}<div class="mosaic-welcome-shape" aria-hidden="true" hidden></div>`;
   mosaicWelcome.querySelector('.mosaic-photo').onerror=function(){this.remove();mosaicWelcome.classList.remove('com-foto');mosaicWelcome.querySelector('.mosaic-welcome-shape').hidden=false};
   const caixa=mosaicWelcome.querySelector('.mosaic-contagem');
   if(caixa&&atualizarContagem(caixa,b.contagem))relogioContagem=setInterval(()=>{if(!atualizarContagem(caixa,b.contagem))clearInterval(relogioContagem)},1000);
