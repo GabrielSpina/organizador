@@ -16,15 +16,26 @@ mesmo dia. O que faltar é completado assim:
   (`ritmo.history.v1` do estado das telas), nos 7 dias que terminam na data.
 
 No fim imprime a leitura das semanas (o que funcionou e o que não), para o
-Claude responder no chat. Grava direto no Parquet: não precisa do servidor no
-ar, e a tela mostra na próxima abertura da aba.
+Claude responder no chat. Grava na nuvem (repositório privado organizador-dados,
+clonado em Desktop\\organizador-dados): traz o que a página gravou, grava, recalcula
+a leitura e envia — a página e o celular mostram na próxima abertura da aba.
+Não precisa do servidor no ar. Com --local, grava nos Parquet de dados/.
 """
 import json
 import re
 import sys
 from datetime import date, timedelta
 
-from organizador import estado, medidas, pesos, semanas, shape_inteligencia
+# Os dados moram na nuvem (repositório privado organizador-dados): liga ANTES de importar
+# os módulos de dados. Com --local, grava nos Parquet de dados/ como antes da nuvem.
+from organizador import nuvem
+
+NA_NUVEM = "--local" not in sys.argv
+if NA_NUVEM:
+    nuvem.ativar()
+    nuvem.puxar()
+
+from organizador import estado, medidas, pesos, semanas, shape_inteligencia  # noqa: E402 — depois do ativar()
 
 ACADEMIA = re.compile(r"gym|academia|muscula|treino", re.I)
 JIU = re.compile(r"jiu", re.I)
@@ -43,7 +54,7 @@ def contar_no_concluidos(dia: str) -> dict:
 
 def main() -> None:
     sys.stdout.reconfigure(encoding="utf-8")
-    with open(sys.argv[1], encoding="utf-8") as arquivo:
+    with open([a for a in sys.argv[1:] if a != "--local"][0], encoding="utf-8") as arquivo:
         dados = json.load(arquivo)
     dia = date.fromisoformat(dados.pop("data")).isoformat()
 
@@ -74,6 +85,11 @@ def main() -> None:
     leitura = shape_inteligencia.analisar(semanas.listar(), pesos.listar(), medidas.listar())
     for dica in leitura["dicas"]:
         print(f"[{dica['tipo']}] {dica['titulo']}\n    {dica['texto']}")
+    if NA_NUVEM:
+        nuvem.regravar_analise()
+        dia_br = date.fromisoformat(dia).strftime("%d/%m/%Y")
+        enviado = nuvem.enviar(f"Shape: registro de sexta de {dia_br}")
+        print("\nEnviado para a nuvem (a página e o celular já mostram)." if enviado else "\nNada mudou: nada a enviar.")
 
 
 if __name__ == "__main__":

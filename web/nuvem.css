@@ -17,3 +17,6 @@
 .nuvem-selo[data-situacao=erro]{color:#a2463d;border-color:#ecd0cc}
 .nuvem-sair{border:0;background:#f3f1f5;color:#6f6a77;border-radius:999px;padding:4px 9px;font:inherit;font-size:11px;cursor:pointer}
 .nuvem-sair:hover{background:#ebe6f0}
+.nuvem-login-caixa .nuvem-login-voltar{background:#f1eef5;color:#5d5868;font-weight:600}
+.nuvem-aviso-local{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;background:#fff6ea;border-bottom:1px solid #f1d9b8;color:#7a5530;font-size:13px;padding:9px 16px}
+.nuvem-aviso-local button{border:0;border-radius:8px;padding:6px 12px;background:#6c4fa3;color:#fff;font:inherit;font-weight:700;cursor:pointer}

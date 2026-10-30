@@ -1,4 +1,24 @@
-(()=>{
+// A agenda da página de notícias ("Guardar na agenda").
+// Com a chave da nuvem neste navegador, a agenda mora no repositório privado de dados
+// (como o resto do organizador): o nuvem.js é carregado antes, e o que se guarda num
+// aparelho aparece nos outros. Sem a chave, fica só neste navegador, como antes.
+(async()=>{
+  if(localStorage.getItem('organizador.nuvem.chave')&&!window.Nuvem){
+    const carregar=(tag,attrs)=>new Promise((ok,falha)=>{const el=Object.assign(document.createElement(tag),attrs);el.onload=ok;el.onerror=falha;document.head.append(el)});
+    try{
+      await carregar('link',{rel:'stylesheet',href:'../nuvem.css'});
+      await carregar('script',{src:'../nuvem.js'});
+      window.ORGANIZADOR??={nuvem:false,servidorLocal:false};
+      // O que este aparelho guardou só para si antes da nuvem não se perde: junta com a da nuvem.
+      let soNoAparelho=[];try{soNoAparelho=JSON.parse(localStorage.getItem('organizador.noticias.agenda.v1')||'[]')}catch{}
+      await Nuvem.iniciar();
+      if(Array.isArray(soNoAparelho)&&soNoAparelho.length){
+        let daNuvem=[];try{daNuvem=JSON.parse(localStorage.getItem('organizador.noticias.agenda.v1')||'[]')}catch{}
+        const ids=new Set(daNuvem.map(n=>n.id));const faltam=soNoAparelho.filter(n=>n&&n.id&&!ids.has(n.id));
+        if(faltam.length)localStorage.setItem('organizador.noticias.agenda.v1',JSON.stringify([...daNuvem,...faltam]));
+      }
+    }catch(erro){console.warn('Agenda: sem a nuvem, fica só neste navegador.',erro)}
+  }
   const STORAGE_KEY='organizador.noticias.agenda.v1';
   const OPEN_KEY='organizador.noticias.agenda.aberta.v1';
   let saved=[];

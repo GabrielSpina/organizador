@@ -128,7 +128,8 @@ const Nuvem=(()=>{
     return r;
   };
   const dia=t=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(t))throw new Error('Dia inválido.');return t};
-  const CAMPOS_FITA={circunferencia_abdominal_cm:'Circunferência abdominal',linha_cintura_cm:'Linha de cintura'};
+  // Os mesmos campos de organizador/medidas.py (CAMPOS). Desde 22/10/2026 é um só: a cintura.
+  const CAMPOS_FITA={cintura_cm:'Circunferência da cintura'};
 
   async function atender(metodo,caminho,corpo){
     let m;
@@ -163,7 +164,7 @@ const Nuvem=(()=>{
       doc.alterar(l=>{
         const atual=l.find(x=>x.data===d),anteriores=porData(l).filter(x=>x.data<d);
         const metodo=corpo.metodo||atual?.metodo||anteriores[anteriores.length-1]?.metodo||'novo_metodo_padronizado';
-        const reg={data:d,circunferencia_abdominal_cm:atual?.circunferencia_abdominal_cm??null,linha_cintura_cm:atual?.linha_cintura_cm??null};
+        const reg={data:d,...Object.fromEntries(Object.keys(CAMPOS_FITA).map(c=>[c,atual?.[c]??null]))};
         for(const [c,v] of Object.entries(novos))if(v!=null)reg[c]=v;
         Object.assign(reg,{metodo,atualizado_em:agora()});gravada=reg;
         const i=l.findIndex(x=>x.data===d);i>=0?l.splice(i,1,reg):l.push(reg);
@@ -218,6 +219,8 @@ const Nuvem=(()=>{
   };
   window.addEventListener('beforeunload',e=>{if(algumPendente()){e.preventDefault();e.returnValue=''}});
 
+  const esconderApp=(esconder=true)=>{const app=document.querySelector('.app');if(app)app.hidden=esconder};
+
   // --- login ---------------------------------------------------------------------------
   function telaDeLogin(mensagem){
     const nomeMaquina=(navigator.userAgentData?.platform||navigator.platform||'maquina').replace(/\W+/g,'-').toLowerCase();
@@ -230,6 +233,7 @@ const Nuvem=(()=>{
       ${mensagem?`<p class="nuvem-login-erro">${mensagem}</p>`:''}
       <label>Chave de acesso<input type="password" name="chave" autocomplete="off" required placeholder="github_pat_..."></label>
       <button type="submit">Entrar</button>
+      ${ORGANIZADOR.servidorLocal?'<button type="button" class="nuvem-login-voltar">Continuar sem a nuvem (dados antigos deste computador)</button>':''}
       <details><summary>Como criar a chave</summary><ol>
         <li>Abra <a href="${linkChave}" target="_blank" rel="noopener noreferrer">a página de chaves do GitHub</a> (já vem com nome e permissão sugeridos).</li>
         <li>Em <b>Repository access</b>, escolha <b>Only select repositories</b> → <b>${REPO}</b>.</li>
@@ -257,11 +261,20 @@ const Nuvem=(()=>{
         aviso.textContent=erro instanceof ChaveInvalida?'Chave não aceita pelo GitHub. Confira se copiou inteira.':erro.message;
       }
     };
+    form.querySelector('.nuvem-login-voltar')?.addEventListener('click',()=>{tela.remove();esconderApp(false)});
     form.elements.chave.focus();
+  }
+  // No computador, sem a chave, a página mostra os Parquet de dados/ — que pararam no dia da
+  // migração para a nuvem (30/10/2026). O aviso evita mexer neles achando que são os de hoje.
+  function avisoDadosLocais(){
+    const aviso=document.createElement('div');aviso.className='nuvem-aviso-local';
+    aviso.innerHTML='<span><b>Dados antigos deste computador.</b> Desde 30/10/2026 os seus dados ficam na nuvem; o que mudar aqui não aparece no celular nem na web.</span><button type="button">Entrar com a chave</button>';
+    aviso.querySelector('button').onclick=()=>{esconderApp();telaDeLogin()};
+    document.body.prepend(aviso);
   }
   function pedirLoginDeNovo(mensagem){
     apagarDadosDoNavegador();
-    if(!document.querySelector('.nuvem-login')){document.querySelector('.app')?.remove();telaDeLogin(mensagem+' Cole uma chave nova.')}
+    if(!document.querySelector('.nuvem-login')){esconderApp();telaDeLogin(mensagem+' Cole uma chave nova.')}
   }
 
   // --- abertura ------------------------------------------------------------------------
@@ -269,14 +282,15 @@ const Nuvem=(()=>{
   async function iniciar(){
     chave=localStorage.getItem(CHAVE_KEY);
     if(!chave){
-      if(!ORGANIZADOR.servidorLocal){apagarDadosDoNavegador();document.querySelector('.app').hidden=true;telaDeLogin();return false}
+      if(!ORGANIZADOR.servidorLocal){apagarDadosDoNavegador();esconderApp();telaDeLogin();return false}
+      avisoDadosLocais();
       return true; // modo local de sempre (Parquet em dados/)
     }
     try{
       const estado=await arquivo('estado.json').obter();
       prepararEstado(estado);
     }catch(erro){
-      if(erro instanceof ChaveInvalida){document.querySelector('.app').hidden=true;pedirLoginDeNovo(erro.message);return false}
+      if(erro instanceof ChaveInvalida){esconderApp();pedirLoginDeNovo(erro.message);return false}
       throw erro;
     }
     ORGANIZADOR.nuvem=true;
@@ -288,7 +302,7 @@ const Nuvem=(()=>{
     const caixa=document.createElement('div');caixa.className='nuvem-login';
     caixa.innerHTML=`<div class="nuvem-login-caixa"><h1>✳ organizador</h1><p class="nuvem-login-erro">Não consegui abrir os dados: ${String(erro.message||erro).replace(/</g,'&lt;')}</p><button type="button">Tentar de novo</button></div>`;
     caixa.querySelector('button').onclick=()=>location.reload();
-    document.querySelector('.app').hidden=true;document.body.append(caixa);
+    esconderApp();document.body.append(caixa);
   }
   return{iniciar,mostrarErro};
 })();

@@ -15,12 +15,21 @@ No fim imprime a leitura das semanas, que já inclui a série da fita.
 import json
 import sys
 
-from organizador import medidas, pesos, semanas, shape_inteligencia
+# Os dados moram na nuvem (repositório privado organizador-dados): liga ANTES de importar
+# os módulos de dados. Com --local, grava nos Parquet de dados/ como antes da nuvem.
+from organizador import nuvem
+
+NA_NUVEM = "--local" not in sys.argv
+if NA_NUVEM:
+    nuvem.ativar()
+    nuvem.puxar()
+
+from organizador import medidas, pesos, semanas, shape_inteligencia  # noqa: E402 — depois do ativar()
 
 
 def main() -> None:
     sys.stdout.reconfigure(encoding="utf-8")
-    with open(sys.argv[1], encoding="utf-8") as arquivo:
+    with open([a for a in sys.argv[1:] if a != "--local"][0], encoding="utf-8") as arquivo:
         dados = json.load(arquivo)
     for linha in dados["historico"]:
         if dados.get("metodo") and "metodo" not in linha:
@@ -30,6 +39,11 @@ def main() -> None:
     print()
     for dica in shape_inteligencia.analisar(semanas.listar(), pesos.listar(), medidas.listar())["dicas"]:
         print(f"[{dica['tipo']}] {dica['titulo']}\n    {dica['texto']}")
+    if NA_NUVEM:
+        nuvem.regravar_analise()
+        dias = ", ".join(linha["data"] for linha in dados["historico"])
+        enviado = nuvem.enviar(f"Shape: medidas na fita ({dias})")
+        print("\nEnviado para a nuvem (a página e o celular já mostram)." if enviado else "\nNada mudou: nada a enviar.")
 
 
 if __name__ == "__main__":

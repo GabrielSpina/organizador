@@ -38,6 +38,18 @@ Dois repositórios no GitHub da conta GabrielSpina:
   como antes.
 - **Migração:** `python exportar_para_nuvem.py <clone do organizador-dados>`
   gera os JSON a partir dos Parquet.
+- **O que o Claude grava pelo chat** (registro de sexta, medidas) também vai para a
+  nuvem: `registrar_semana.py` e `registrar_medidas.py` trazem o clone
+  `Desktop\organizador-dados` do GitHub, gravam nos JSON, recalculam o `analise.json`
+  e enviam (`organizador/nuvem.py`). Com `--local`, gravam nos Parquet, como antes.
+- **A leitura "o que funcionou"** é recalculada sozinha: a automação do
+  `organizador-dados` (`.github/workflows/analise.yml`) roda o `regravar_analise.py`
+  daqui toda vez que `pesos.json`, `medidas.json` ou `semanas.json` mudam — inclusive
+  pelo celular. Leva cerca de 1 minuto.
+- **A agenda da página de Notícias** também mora na nuvem (o `agenda.js` carrega o
+  `nuvem.js` quando o navegador tem a chave).
+- **No computador sem a chave**, a página avisa que mostra os dados antigos (os
+  Parquet pararam em 30/10/2026) e oferece entrar.
 
 ## A aba 💬 Chats
 
