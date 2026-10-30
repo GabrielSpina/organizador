@@ -1,0 +1,32 @@
+.sem-segmentos{border-collapse:collapse;font-size:12px;width:auto!important}
+.sem-segmentos th{text-align:left;color:#4a564d;padding:4px 10px 4px 0;font-weight:700}
+.sem-segmentos thead th{color:#8b958c;font-size:11px}
+.sem-segmentos td{padding:3px 8px 3px 0}
+.sem-dicas-lista{display:grid;gap:8px}
+.sem-dica{border-left:4px solid #b9c2ba;background:#f7f9f7;border-radius:8px;padding:9px 12px}
+.sem-dica b{font-size:13px}
+.sem-dica p{margin:4px 0 0;font-size:12.5px;line-height:1.55;color:#4a564d}
+.sem-dica.funcionou{border-color:#3f7a4f;background:#eef6ef}
+.sem-dica.nao_funcionou{border-color:#a2463d;background:#fbf0ee}
+.sem-dica.indicio{border-color:#7c5cc4;background:#f3eefc}
+.sem-dica.alerta{border-color:#c27a3a;background:#fff6ea}
+.sem-item{border:1px solid #edf0ec;border-radius:12px;padding:12px 14px;border-left:4px solid #b9c2ba}
+.sem-item.bom{border-left-color:#3f7a4f}.sem-item.ruim{border-left-color:#a2463d}.sem-item.misto{border-left-color:#c27a3a}
+.sem-item header{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sem-selo{font-size:11px;font-weight:700;background:#f1f3f0;border-radius:999px;padding:3px 9px;color:#4a564d}
+.sem-numeros{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;margin:10px 0}
+.sem-numeros div{display:flex;flex-direction:column;gap:2px}
+.sem-numeros small{font-size:11px;color:#8b958c}
+.sem-numeros strong{font-size:16px}
+.sem-numeros .desce{color:#3f7a4f;font-weight:700}.sem-numeros .sobe{color:#a2463d;font-weight:700}
+.sem-item dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 12px;margin:0;font-size:12.5px}
+.sem-item dt{color:#8b958c;font-weight:700}
+.sem-item dd{margin:0;white-space:pre-wrap;color:#3d4740}
+.sem-item summary{cursor:pointer;color:#52775c}
+.sem-como{font-size:12.5px;color:#4a564d;background:#eef4ef;border:1px solid #d8e6da;border-radius:12px;padding:10px 14px;line-height:1.5}
+.sem-medidas-lista{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px 14px;margin:8px 0 10px;white-space:normal}
+.sem-medidas-lista div{display:flex;flex-direction:column}
+.sem-medidas-lista small{font-size:11px;color:#8b958c}
+.sem-segmentos td{text-align:right}
+@media(max-width:900px){.sem-numeros{grid-template-columns:repeat(3,minmax(0,1fr))}.sem-medidas-lista{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.sem-numeros{grid-template-columns:1fr 1fr}}

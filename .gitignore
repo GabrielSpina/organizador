@@ -1,0 +1,19 @@
+# Este repositório é PÚBLICO (o GitHub Pages grátis só publica repositório público):
+# aqui entra só código. Os dados moram no repositório privado organizador-dados.
+
+# Os dados do organizador local (cards, peso, medidas, chats)
+dados/
+
+# Anotações do trabalho que o Claude escreve para o painel do chat — ficam só nesta máquina
+web/painel*.json
+
+# Atalhos (apontam para caminhos desta máquina) e as fotos originais soltas na raiz
+# (as que a página usa estão em web/imagens/)
+*.lnk
+/*.jpg
+/*.jpeg
+/*.png
+
+# Python
+__pycache__/
+*.pyc

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<link rel="stylesheet" href="agenda.css">
+<script src="agenda.js" defer></script>
+<script src="visibilidade.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notícias do dia — Organizador</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f5f3f7;color:#302f40;font:14px Arial,system-ui,sans-serif}
+.page{max-width:1080px;margin:auto;padding:32px 22px 70px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:15px}
+.brand{font-size:21px;font-weight:900;letter-spacing:-1px}
+.brand i{font-style:normal;color:#e26f68}
+.back{color:#7659a2;text-decoration:none;font-size:12px;font-weight:700}
+.hero{background:#e8ddfb;border-radius:17px;padding:27px 30px;margin:30px 0 14px}
+.eyebrow{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:#8669ae;font-weight:800}
+.hero h1{font-size:33px;letter-spacing:-1px;margin:9px 0}
+.hero p{font-size:13px;color:#766589;max-width:680px;line-height:1.55;margin:0}
+.stamp{background:#6749a2;color:#fff;border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;white-space:nowrap}
+.stamp span{font-weight:400;opacity:.85}
+.atualizado{display:inline-block;background:#6749a2;color:#fff;border-radius:20px;padding:7px 15px;font-size:13px;margin:0 0 12px}
+.atualizado strong{font-weight:700}
+.meta{color:#827a8a;font-size:11px;line-height:1.6;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:1fr;gap:18px}
+.indice{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:8px;background:#f5f3f7ee;backdrop-filter:blur(4px);padding:10px 0 12px;margin:0 0 6px}
+.indice a{background:#fff;border:1px solid #e6dff0;border-radius:20px;padding:6px 12px;color:#6a4f93;font-size:12px;font-weight:700;text-decoration:none}
+.indice a:hover{background:#efe7fa}
+.section{scroll-margin-top:64px}
+.section{background:#fff;border:1px solid #eeeaf1;box-shadow:0 8px 25px #3e315409;border-radius:15px;padding:22px}
+.section h2{display:flex;align-items:center;gap:8px;font-size:17px;margin:0 0 14px}
+.section h2 .icon{font-size:18px}
+.count{margin-left:auto;border-radius:20px;background:#f5f1f8;color:#806d91;padding:5px 9px;font-size:10px;font-weight:700;letter-spacing:.2px;white-space:nowrap}
+.list{display:grid;gap:11px;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));align-items:start}
+.item{border:1px solid #f0edf2;border-radius:11px;padding:14px 14px 13px}
+.item h3{font-size:14px;line-height:1.4;margin:0 0 7px}
+.dates{color:#8b8292;font-size:10px;line-height:1.55;margin-bottom:8px}
+.item p{color:#615a69;font-size:12px;line-height:1.55;margin:0 0 9px}
+.item .service{color:#7e7484;font-size:11px}
+.item .caveat{color:#a0705f;font-size:11px}
+.sources{display:flex;flex-wrap:wrap;gap:10px}
+.sources a{color:#7659a2;font-size:11px;font-weight:700;text-decoration:none}
+.sources a:hover,.back:hover{text-decoration:underline}
+.section-note{font-size:11px;color:#9b94a3;line-height:1.5;margin:12px 0 0}
+.note{font-size:11px;color:#9b94a3;line-height:1.5;margin-top:18px}
+@media(max-width:700px){.list{grid-template-columns:1fr}.indice a{padding:5px 10px;font-size:11px}.page{padding:20px 14px 45px}.hero{padding:22px;margin-top:24px}.hero h1{font-size:27px}.section{padding:18px}.top{align-items:flex-start;flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<main class="page">
+<div class="top">
+  <div class="brand"><i>✦</i> organizador</div>
+  <a class="back" href="../organizador.html">← Voltar ao organizador</a>
+</div>
+<header class="hero">
+  <div class="eyebrow">Painel de notícias</div>
+  <h1>Notícias do dia</h1>
+  <div class="atualizado">Atualizado em <strong>sexta, 30 de outubro de 2026, às 09:23</strong></div>
+  <p>Seleção de notícias recentes, resultados e programação cultural. As datas de publicação e dos eventos aparecem separadas em cada nota.</p>
+</header>
+<div class="meta"><strong>Janela pesquisada:</strong> 25 out 2026, 09:23 a 30 out 2026, 09:23 (horário de São Paulo)</div>
+
+<nav class="indice" aria-label="Assuntos"><a href="#ia">IA</a><a href="#lutas">Lutas</a><a href="#moda">Moda</a><a href="#expos">Exposições</a><a href="#tech">Tecnologia</a><a href="#esportes-locais">Esportes locais</a><a href="#feiras-locais">Feiras</a></nav>
+<div class="grid">
+
+<section class="section" id="ia" aria-labelledby="ia-heading">
+  <h2 id="ia-heading"><span class="icon">✦</span> IA <span class="count">8 notícias</span></h2>
+  <div class="list">
+    <article class="item news-item" data-news-id="https://github.com/kouweizhu/agents-radar/issues/672" data-category="IA" data-published="2026-10-27" data-source-url="https://github.com/kouweizhu/agents-radar/issues/672">
+      <h3>Skills em alta: Hallmark lidera, e a Nvidia lança o SkillSpector para checar skills antes de instalar</h3>
+      <div class="dates">Tendências do GitHub de 25 a 27 out 2026</div>
+      <p>O <strong>Hallmark</strong>, skill de design que tira a “cara de IA” das telas feitas por Claude Code, Cursor e Codex, liderou o dia (+2.244 estrelas; <code>npx skills add nutlope/hallmark</code>). O <strong>SkillSpector</strong>, da Nvidia, examina uma skill antes de você instalar: 64 padrões de risco (injeção de prompt, vazamento de dados, dependências vulneráveis) e nota de 0 a 100 — o estudo por trás dele achou falhas em 26,1% das skills e intenção maliciosa provável em 5,2%. Também sobem a skill de auditoria de segurança da Cloudflare, o <strong>impeccable</strong> e as <strong>karpathy-skills</strong>.</p>
+      <p class="caveat">Rankings de relatórios automáticos; “nenhum achado” no SkillSpector não garante que a skill é segura.</p>
+      <div class="sources"><a href="https://github.com/kouweizhu/agents-radar/issues/672" target="_blank" rel="noopener noreferrer">AI Open Source Trends (27/10)</a><a href="https://www.helpnetsecurity.com/2026/08/03/skillspector-open-source-agent-skill-security-scanner/" target="_blank" rel="noopener noreferrer">Help Net Security: SkillSpector</a><a href="https://docs.nvidia.com/skills/scanning-agent-skills" target="_blank" rel="noopener noreferrer">Documentação da Nvidia</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://androidauthority.com/gemini-ai-plus-downgrade-chatgpt-claude-alternatives-3724772" data-category="IA" data-published="2026-10-25" data-source-url="https://androidauthority.com/gemini-ai-plus-downgrade-chatgpt-claude-alternatives-3724772">
+      <h3>Google tira o Gemini Pro do plano AI Plus</h3>
+      <div class="dates">Publicação: 25 out 2026</div>
+      <p>Quem assina o AI Plus fica só com os modelos Flash.</p>
+      <div class="sources"><a href="https://androidauthority.com/gemini-ai-plus-downgrade-chatgpt-claude-alternatives-3724772" target="_blank" rel="noopener noreferrer">Android Authority</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://finance.biggo.com/news/b21d4c64-7536-456e-b039-6e0c5eb46117" data-category="IA" data-published="2026-10-29" data-source-url="https://finance.biggo.com/news/b21d4c64-7536-456e-b039-6e0c5eb46117">
+      <h3>Gemini passa a criar e editar documentos e PDFs dentro da conversa</h3>
+      <div class="dates">Liberação: 29 out 2026 · todos os usuários, em todos os idiomas do app</div>
+      <p>Dá para gerar o documento, ver a prévia e ajustar sem exportar antes. A edição de PDF funciona na web e no celular.</p>
+      <p class="caveat">Notícia de um único agregador; confira nas notas de versão do Google.</p>
+      <div class="sources"><a href="https://finance.biggo.com/news/b21d4c64-7536-456e-b039-6e0c5eb46117" target="_blank" rel="noopener noreferrer">BigGo Finance</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://winbuzzer.com/2026/10/29/chatgpts-dot-agent-takes-tasks-by-text-xcxwbn" data-category="IA" data-published="2026-10-29" data-source-url="https://winbuzzer.com/2026/10/29/chatgpts-dot-agent-takes-tasks-by-text-xcxwbn">
+      <h3>Dot, o agente do ChatGPT, agora recebe tarefas por SMS</h3>
+      <div class="dates">Liberação: a partir de 28 out 2026 · ChatGPT Pro nos EUA</div>
+      <p>A mensagem de texto chega ao mesmo agente que já atende pelo ChatGPT, pelo Slack e pelo Teams.</p>
+      <p class="caveat">As mensagens passam pela Linq antes de chegar à OpenAI e não têm criptografia de ponta a ponta.</p>
+      <div class="sources"><a href="https://winbuzzer.com/2026/10/29/chatgpts-dot-agent-takes-tasks-by-text-xcxwbn" target="_blank" rel="noopener noreferrer">WinBuzzer</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://techstartups.com/2026/10/27/tech-news-today-october-27-2026-anthropic-files-for-ipo-63b-ai-chip-deal-microsofts-60000-employee-buyouts-and-openais-new-gpt-6-1-terra/#terra" data-category="IA" data-published="2026-10-26" data-source-url="https://techstartups.com/2026/10/27/tech-news-today-october-27-2026-anthropic-files-for-ipo-63b-ai-chip-deal-microsofts-60000-employee-buyouts-and-openais-new-gpt-6-1-terra/">
+      <h3>GPT-6.1 Terra chega ao Codex e ao ChatGPT Work: mais rápido e pela metade do preço</h3>
+      <div class="dates">Lançamento: 26 out 2026</div>
+      <p>Modelo feito para usar o computador, programar e ler imagens (desenho técnico, formulário, edição de vídeo). Na API custa US$ 1 por milhão de tokens de entrada e US$ 5 de saída. Pelos testes da própria OpenAI, o Terminal-Bench subiu de 21,5% para 50,3% no esforço máximo.</p>
+      <p class="caveat">Liberado para “usuários elegíveis”; não está claro se chega ao ChatGPT comum. Números de benchmark são da própria OpenAI.</p>
+      <div class="sources"><a href="https://techstartups.com/2026/10/27/tech-news-today-october-27-2026-anthropic-files-for-ipo-63b-ai-chip-deal-microsofts-60000-employee-buyouts-and-openais-new-gpt-6-1-terra/" target="_blank" rel="noopener noreferrer">Tech Startups (27/10)</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://techstartups.com/2026/10/27/tech-news-today-october-27-2026-anthropic-files-for-ipo-63b-ai-chip-deal-microsofts-60000-employee-buyouts-and-openais-new-gpt-6-1-terra/#ios-27-2" data-category="IA" data-published="2026-10-26" data-source-url="https://techstartups.com/2026/10/27/tech-news-today-october-27-2026-anthropic-files-for-ipo-63b-ai-chip-deal-microsofts-60000-employee-buyouts-and-openais-new-gpt-6-1-terra/">
+      <h3>iOS 27.2: Siri com memória das conversas e IA em português</h3>
+      <div class="dates">Liberação: 26 out 2026</div>
+      <p>A Siri passa a lembrar conversas anteriores e a consultar recados de voz e anexos do Mensagens. Um ajuste novo, “Apps excluídos”, limita quais apps a Siri e a busca podem ler. A Siri com IA ganha português, espanhol, francês, japonês e coreano.</p>
+      <p class="caveat">Fora da União Europeia e da China continental; a disponibilidade no Brasil não foi confirmada.</p>
+      <div class="sources"><a href="https://techstartups.com/2026/10/27/tech-news-today-october-27-2026-anthropic-files-for-ipo-63b-ai-chip-deal-microsofts-60000-employee-buyouts-and-openais-new-gpt-6-1-terra/" target="_blank" rel="noopener noreferrer">Tech Startups (27/10)</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://aiweekly.co/alerts/google-ships-gemini-4-carbon-tops-aa-intelligence-index-at-59" data-category="IA" data-published="2026-10-28" data-source-url="https://aiweekly.co/alerts/google-ships-gemini-4-carbon-tops-aa-intelligence-index-at-59">
+      <h3>Google lança o Gemini 4 Carbon, que passa Claude e GPT no ranking da Artificial Analysis</h3>
+      <div class="dates">Lançamento: 28 out 2026 · acesso por etapas</div>
+      <p>Modelo voltado a segurança digital e a trabalho autônomo de vários dias: 59 pontos no índice de inteligência, contra 58 do Claude Opus 5.5 e 57 do GPT-6 Astra. Primeiro vai para cerca de 650 parceiros de defesa cibernética; desenvolvedores e o público vêm depois, sem data. Na API, US$ 2 por milhão de tokens de entrada e US$ 10 de saída no preço de lançamento.</p>
+      <p class="caveat">Ainda não chegou ao app do Gemini; os números de segurança são da própria Google.</p>
+      <div class="sources"><a href="https://aiweekly.co/alerts/google-ships-gemini-4-carbon-tops-aa-intelligence-index-at-59" target="_blank" rel="noopener noreferrer">AI Weekly (cita o blog do Google)</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://munderdiffl.in/blog/agent-tools-today-2026-10-26/#skills" data-category="IA" data-published="2026-10-26" data-source-url="https://munderdiffl.in/blog/agent-tools-today-2026-10-26/">
+      <h3>Skills da semana: Claude Code editando vídeo no DaVinci Resolve e Rust idiomático</h3>
+      <div class="dates">Edição de 26 out 2026</div>
+      <p>As <strong>Video Editor Skills</strong> fazem do Claude Code um primeiro editor no DaVinci Resolve Studio: cortam repetições e silêncios, mantêm o B-roll, escrevem legendas e ajudam a exportar (uso não comercial). O <strong>Beautiful Rust</strong> traz três skills para escrever, revisar e portar código Rust, rodando os testes originais antes de portar. Em ferramentas, a JetBrains abriu o <strong>ThinkRail</strong>, uma IDE de agentes com uma worktree por espaço de trabalho.</p>
+      <p class="caveat">Projetos da comunidade, sem revisão de segurança; vale passar no SkillSpector antes de instalar.</p>
+      <div class="sources"><a href="https://munderdiffl.in/blog/agent-tools-today-2026-10-26/" target="_blank" rel="noopener noreferrer">Agent Tools Today (26/10)</a><a href="https://github.com/appariciojunior/video-editor-skills" target="_blank" rel="noopener noreferrer">Video Editor Skills (GitHub)</a><a href="https://github.com/morganlinton/BeautifulRust" target="_blank" rel="noopener noreferrer">Beautiful Rust (GitHub)</a></div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="lutas" aria-labelledby="lutas-heading">
+  <h2 id="lutas-heading"><span class="icon">🥊</span> Lutas <span class="count">6 notícias</span></h2>
+  <div class="list">
+    <article class="item news-item" data-news-id="https://www.ufc.com/news/ufc-bjj-13-tackett-vs-rodriguez-results" data-category="Lutas" data-published="2026-10-29" data-event-date="2026-10-29" data-source-url="https://www.ufc.com/news/ufc-bjj-13-tackett-vs-rodriguez-results">
+      <h3>Jiu-jitsu: William Tackett finaliza em 86 segundos, e os Tackett viram os primeiros irmãos campeões do UFC BJJ</h3>
+      <div class="dates">Evento: 29 out 2026 · Meta APEX, Las Vegas · Resultado oficial</div>
+      <p>Mata-leão em Jay Rodriguez a 1min26s do primeiro round, pelo cinturão vago dos médios; o irmão Andrew segura o dos meio-médios. Jalen Fonacier venceu o brasileiro Kleber Barboza por decisão unânime e ficou com o título vago dos galos. Nick Rodriguez finalizou Nata Tenca no terceiro round, e Ffion Davies venceu Jaine Fragoso com um triângulo de braço.</p>
+      <div class="sources"><a href="https://www.ufc.com/news/ufc-bjj-13-tackett-vs-rodriguez-results" target="_blank" rel="noopener noreferrer">UFC: resultados</a><a href="https://combatpress.com/2026/10/ufc-bjj-13-results-tackett-fonacier-claim-vacant-titles/" target="_blank" rel="noopener noreferrer">Combat Press</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://ibjjf.com/news/2026-european-no-gi-event-guide-storylines" data-category="Lutas" data-published="2026-10-21" data-event-date="2026-10-28" data-source-url="https://ibjjf.com/news/2026-european-no-gi-event-guide-storylines">
+      <h3>Jiu-jitsu, agenda: Europeu No-Gi da IBJJF em andamento em Roma</h3>
+      <div class="dates">Evento: 28 out a 1º nov 2026 · Roma, Itália · FloGrappling</div>
+      <p>Último Grand Slam sem kimono da temporada 2025-2026 e o maior da história do torneio, com mais de 2.960 inscritos em cinco dias. Entre os campeões de edições passadas estão Gabi Pessanha e Mayssa Bastos.</p>
+      <div class="sources"><a href="https://ibjjf.com/news/2026-european-no-gi-event-guide-storylines" target="_blank" rel="noopener noreferrer">IBJJF</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://judoinside.com/#grand-slam-abu-dhabi-2026" data-category="Lutas" data-published="2026-10-28" data-event-date="2026-10-29" data-source-url="https://judoinside.com/">
+      <h3>Judô, agenda: Grand Slam de Abu Dhabi, até sábado (31)</h3>
+      <div class="dates">Evento: 29 a 31 out 2026 · Abu Dhabi</div>
+      <p>Etapa do circuito mundial da Federação Internacional de Judô.</p>
+      <p class="caveat">Lista de inscritos brasileiros não conferida.</p>
+      <div class="sources"><a href="https://judoinside.com/" target="_blank" rel="noopener noreferrer">JudoInside</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://sambo.sport/en/news/chempionat-mira-po-sambo-v-2026-godu-proydet-v-uzbekistane-po-plyazhnomu-sambo-v-brazilii/" data-category="Lutas" data-published="2026-10-08" data-event-date="2026-11-06" data-source-url="https://sambo.sport/en/news/chempionat-mira-po-sambo-v-2026-godu-proydet-v-uzbekistane-po-plyazhnomu-sambo-v-brazilii/">
+      <h3>Sambo, agenda: Mundial adulto em Samarcanda, de 6 a 8 de novembro</h3>
+      <div class="dates">Evento: 6 a 8 nov 2026 · Uzbequistão</div>
+      <p>O Mundial de sambo de praia de 2026 está marcado para o Brasil.</p>
+      <div class="sources"><a href="https://sambo.sport/en/news/chempionat-mira-po-sambo-v-2026-godu-proydet-v-uzbekistane-po-plyazhnomu-sambo-v-brazilii/" target="_blank" rel="noopener noreferrer">FIAS</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://fightnews.com/#foster-navarrete-2026-10" data-category="Lutas" data-published="2026-10-25" data-event-date="2026-10-24" data-source-url="https://fightnews.com/">
+      <h3>Boxe: O’Shaquie Foster vence Navarrete e unifica cinturões superpenas</h3>
+      <div class="dates">Luta: 24 out 2026 · Resultado</div>
+      <p>Unificação dos títulos do CMB, OMB e FIB. Em Buenos Aires, Yadira Bustillos ganhou por decisão unânime o cinturão interino peso-mínimo da FIB.</p>
+      <p class="caveat">Detalhes (local e forma da vitória de Foster) não confirmados na fonte consultada.</p>
+      <div class="sources"><a href="https://fightnews.com/" target="_blank" rel="noopener noreferrer">FightNews</a><a href="https://fightnews.com/results-from-buenos-argentina/199078" target="_blank" rel="noopener noreferrer">FightNews: Buenos Aires</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://www.espn.com/mma/story/_/id/50220522/ufc-333-results-volkanovski-evloev#ufc-vegas-123" data-category="Lutas" data-published="2026-10-25" data-event-date="2026-10-31" data-source-url="https://www.espn.com/mma/story/_/id/50220522/ufc-333-results-volkanovski-evloev">
+      <h3>MMA, agenda: Renato Moicano x Tom Nolan no UFC Vegas 123, sábado (31)</h3>
+      <div class="dates">Evento: 31 out 2026 · Las Vegas</div>
+      <p>O brasileiro volta a encabeçar um card do UFC uma semana depois do UFC 333, em que Volkanovski e Petr Yan mantiveram os cinturões.</p>
+      <div class="sources"><a href="https://www.espn.com/mma/story/_/id/50220522/ufc-333-results-volkanovski-evloev" target="_blank" rel="noopener noreferrer">ESPN</a><a href="https://www.lance.com.br/lutas/brasil-volta-a-liderar-evento-do-ufc-com-veterano-do-peso-leve.html" target="_blank" rel="noopener noreferrer">Lance!</a></div>
+    </article>
+  </div>
+  <p class="section-note">O Europeu No-Gi e o Grand Slam de Abu Dhabi terminam no fim de semana; os resultados entram na próxima atualização. O anúncio de Carlos Prates x Michael Morales pelo cinturão interino (24/10) saiu da janela.</p>
+</section>
+
+<section class="section" id="moda" aria-labelledby="moda-heading">
+  <h2 id="moda-heading"><span class="icon">✂</span> Moda <span class="count">3 notícias</span></h2>
+  <div class="list">
+    <article class="item news-item" data-news-id="https://www.designscene.net/2026/10/atelier-versace-couture-pieter-mulier.html" data-category="Moda" data-published="2026-10-28" data-event-date="2027-01-25" data-source-url="https://www.designscene.net/2026/10/atelier-versace-couture-pieter-mulier.html">
+      <h3>Atelier Versace volta à semana de alta-costura de Paris, com Pieter Mulier</h3>
+      <div class="dates">Anúncio: 28 out 2026 · Desfile: semana de 25 a 28 jan 2027</div>
+      <p>Primeiro desfile de alta-costura da casa desde 2016 e a estreia de Mulier, diretor criativo desde julho. A Versace pertence ao grupo Prada desde dezembro de 2025. Data e local exatos ainda serão anunciados.</p>
+      <div class="sources"><a href="https://www.designscene.net/2026/10/atelier-versace-couture-pieter-mulier.html" target="_blank" rel="noopener noreferrer">Designscene</a><a href="https://wwd.com/fashion-news/fashion-scoops/atelier-versace-couture-return-pieter-mulier-1239384891/" target="_blank" rel="noopener noreferrer">WWD</a><a href="https://uk.fashionnetwork.com/news/Versace-to-return-to-paris-couture-week,1879818.html" target="_blank" rel="noopener noreferrer">FashionNetwork</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://www.designscene.net/2026/10/adidas-x-wales-bonner-fall-winter-2026.html" data-category="Moda" data-published="2026-10-28" data-event-date="2026-10-29" data-source-url="https://www.designscene.net/2026/10/adidas-x-wales-bonner-fall-winter-2026.html">
+      <h3>Wales Bonner e adidas lançam hoje a coleção de inverno 2026</h3>
+      <div class="dates">Lançamento: 29 out 2026 · mundial</div>
+      <p>Quatro tênis em couro estampado de croco, camurça e pelo de pônei: Karintha, Gazelle Snake, Adizero Adios Suede e BW Pony. À venda no site da adidas, no app CONFIRMED e em lojas selecionadas.</p>
+      <div class="sources"><a href="https://www.designscene.net/2026/10/adidas-x-wales-bonner-fall-winter-2026.html" target="_blank" rel="noopener noreferrer">Designscene</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://www.designscene.net/2026/10/zegna-summer-2028-beijing.html" data-category="Moda" data-published="2026-10-27" data-event-date="2027-06-11" data-source-url="https://www.designscene.net/2026/10/zegna-summer-2028-beijing.html">
+      <h3>Zegna leva o desfile de verão 2028 para Pequim</h3>
+      <div class="dates">Anúncio: 27 out 2026 · Desfile: 11 jun 2027</div>
+      <p>No dia seguinte abre a Villa Zegna Beijing, clube privado só para convidados, depois das edições de Dubai (2025) e Los Angeles (2026). Foi em Pequim, em 1991, que a marca abriu a primeira loja própria de moda masculina de luxo na China continental.</p>
+      <div class="sources"><a href="https://www.designscene.net/2026/10/zegna-summer-2028-beijing.html" target="_blank" rel="noopener noreferrer">Designscene</a></div>
+    </article>
+  </div>
+  <p class="section-note">Também na semana: a Frasers Group passou de 50% da Hugo Boss e assume o controle (27/10); o stylist Carlos Nazario virou editor-chefe da Wonderland (28/10); a Bergdorf Goodman tem novo presidente (29/10); e a Balenciaga lançou a coleção de esqui (27/10). A Calvin Klein segue sem estilista desde a saída de Veronica Leoni.</p>
+</section>
+
+<section class="section" id="expos" aria-labelledby="expos-heading">
+  <h2 id="expos-heading"><span class="icon">◈</span> Exposições em São Paulo <span class="count">3 opções</span></h2>
+  <div class="list">
+    <article class="item news-item" data-news-id="https://pinacoteca.org.br/en/programacao/exposicoes/via-satelite-dialogos-com-nam-june-paik-charlotte-moorman-vivian-caccuri/" data-category="Exposições" data-published="2026-10-17" data-event-date="2026-10-17" data-source-url="https://pinacoteca.org.br/en/programacao/exposicoes/via-satelite-dialogos-com-nam-june-paik-charlotte-moorman-vivian-caccuri/">
+      <h3>“Via Satélite”: retrospectiva de Nam June Paik abriu no sábado na Pinacoteca</h3>
+      <div class="dates">Exposição: 17 out 2026 a 13 mar 2027</div>
+      <p>Mostra inédita do pioneiro da videoarte, em diálogo com Charlotte Moorman e Vivian Caccuri. A segunda parte ocupa a Grande Galeria a partir de 28 de novembro.</p>
+      <p class="service">Pina Contemporânea, Galeria Praça · Av. Tiradentes, 273, Luz.</p>
+      <div class="sources"><a href="https://pinacoteca.org.br/en/programacao/exposicoes/via-satelite-dialogos-com-nam-june-paik-charlotte-moorman-vivian-caccuri/" target="_blank" rel="noopener noreferrer">Pinacoteca</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://catracalivre.com.br/gira/pela-primeira-vez-no-brasil-exposicao-traz-olhar-ironico-de-martin-parr-sobre-o-turismo-mundial-centro-cultural-fiesp-sp/" data-category="Exposições" data-published="2026-10-15" data-event-date="2026-10-15" data-source-url="https://catracalivre.com.br/gira/pela-primeira-vez-no-brasil-exposicao-traz-olhar-ironico-de-martin-parr-sobre-o-turismo-mundial-centro-cultural-fiesp-sp/">
+      <h3>Martin Parr na FIESP, com praia artificial na Paulista</h3>
+      <div class="dates">Exposição: 15 out 2026 a 4 abr 2027</div>
+      <p>“Mundo pequeno”: 45 fotos que ironizam o turismo de massa, pela primeira vez no Brasil, com curadoria de João Kulcsár.</p>
+      <p class="service">Av. Paulista, 1313 · ter–dom, 10h–20h · gratuita, sem agendamento.</p>
+      <div class="sources"><a href="https://catracalivre.com.br/gira/pela-primeira-vez-no-brasil-exposicao-traz-olhar-ironico-de-martin-parr-sobre-o-turismo-mundial-centro-cultural-fiesp-sp/" target="_blank" rel="noopener noreferrer">Catraca Livre</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://mis-sp.org.br/exposicao/marilia-mendonca-sentimento-louco/" data-category="Exposições" data-published="2026-10-09" data-event-date="2026-10-09" data-source-url="https://mis-sp.org.br/exposicao/marilia-mendonca-sentimento-louco/">
+      <h3>“Marília Mendonça – Sentimento Louco” segue no MIS</h3>
+      <div class="dates">Exposição: até 29 nov 2026</div>
+      <p class="service">Av. Europa, 158, Jardim Europa · ter–sex, 10h–19h; sáb, 10h–20h; dom e feriados, 10h–18h · R$ 50 (meia R$ 25); grátis às terças.</p>
+      <div class="sources"><a href="https://mis-sp.org.br/exposicao/marilia-mendonca-sentimento-louco/" target="_blank" rel="noopener noreferrer">Página oficial do MIS</a></div>
+    </article>
+  </div>
+  <p class="section-note">Em cartaz no MIS desde quarta (28): “Caleidoscópio Xapiri Yanomami”, trinta fotografias feitas na comunidade de Xihopi, no rio Demini, até 6/12 (data a confirmar no site do museu). A 50ª Mostra Internacional de Cinema terminou ontem (29).</p>
+</section>
+
+<section class="section" id="tech" aria-labelledby="tech-heading">
+  <h2 id="tech-heading"><span class="icon">⌘</span> Tecnologia <span class="count">5 notícias</span></h2>
+  <div class="list">
+    <article class="item news-item" data-news-id="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-26-2026" data-category="Tecnologia" data-published="2026-10-26" data-source-url="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-26-2026">
+      <h3>Anthropic torna público o pedido de IPO na Nasdaq</h3>
+      <div class="dates">Publicação: 26 out 2026 · Listagem mirada para novembro</div>
+      <p>O prospecto mostra receita de US$ 16,3 bilhões e prejuízo acima de US$ 80 bilhões no 1º semestre, e lista entre os riscos até a possibilidade de consciência das máquinas. A notícia puxou a Nasdaq para cima (+0,82%).</p>
+      <p>O S-1 foi entregue à SEC na segunda (26), com o código ANT. Do prejuízo, cerca de US$ 72 bilhões são ajustes contábeis sem saída de caixa; o prejuízo operacional foi de US$ 693 milhões. Quantidade de ações, preço e valor da empresa ainda não foram definidos.</p>
+      <div class="sources"><a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-26-2026" target="_blank" rel="noopener noreferrer">TheStreet</a><a href="https://techstartups.com/2026/10/27/tech-news-today-october-27-2026-anthropic-files-for-ipo-63b-ai-chip-deal-microsofts-60000-employee-buyouts-and-openais-new-gpt-6-1-terra/" target="_blank" rel="noopener noreferrer">Tech Startups (27/10)</a><a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-26-215000106.html" target="_blank" rel="noopener noreferrer">Yahoo Finance</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://aiweekly.co/alerts/microsoft-q1-revenue-hits-923b-azure-up-48-as-capex-jumps-to-394b-with-175b" data-category="Tecnologia" data-published="2026-10-28" data-source-url="https://aiweekly.co/alerts/microsoft-q1-revenue-hits-923b-azure-up-48-as-capex-jumps-to-394b-with-175b">
+      <h3>Balanços: AWS cresce 39%, Azure 48% e Google Cloud dobra, com gasto em IA ainda maior</h3>
+      <div class="dates">Resultados: 28 e 29 out 2026</div>
+      <p>A Microsoft prevê US$ 175 bilhões de investimento no ano fiscal de 2027, e o relatório trimestral mostra US$ 10 bilhões de receita vinda da OpenAI. A Alphabet teve o Google Cloud em US$ 30,7 bilhões no trimestre (+103%) e prevê investir mais de US$ 300 bilhões em 2027. No mesmo dia, a SK Hynix disse que a produção de DRAM e HBM está vendida até 2029. Na quinta (29), a AWS cresceu 39%, para US$ 46,0 bilhões (o ritmo mais rápido desde 2021), e a Amazon manteve a previsão de US$ 220 bilhões de investimento em 2026. Mesmo assim, a ação caiu mais de 7% depois do pregão, porque o lucro por ação ficou abaixo do esperado.</p>
+      <div class="sources"><a href="https://aiweekly.co/alerts/microsoft-q1-revenue-hits-923b-azure-up-48-as-capex-jumps-to-394b-with-175b" target="_blank" rel="noopener noreferrer">AI Weekly: Microsoft</a><a href="https://aiweekly.co/alerts/alphabet-posts-1276b-q3-with-google-cloud-up-103-to-307b-as-2027-capex-set-to" target="_blank" rel="noopener noreferrer">AI Weekly: Alphabet</a><a href="https://techstartups.com/2026/10/28/tech-news-today-october-28-2026-google-openai-oracle-nvidia-scale-ai-sk-hynix-more/" target="_blank" rel="noopener noreferrer">Tech Startups (28/10)</a><a href="https://www.cnbc.com/2026/10/29/aws-q3-earnings-report-2026.html" target="_blank" rel="noopener noreferrer">CNBC: AWS</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://www.cnbc.com/technology/#microsoft-buyouts-2026-10" data-category="Tecnologia" data-published="2026-10-26" data-source-url="https://www.cnbc.com/technology/">
+      <h3>Microsoft oferece demissão voluntária a 60 mil funcionários</h3>
+      <div class="dates">Publicação: 26 out 2026</div>
+      <p>Anunciado pela diretora de pessoas, Amy Coleman: vale para níveis 70 e abaixo nos EUA, Canadá, Reino Unido e Índia, cerca de 27% da empresa. Entram áreas como Windows, Xbox, Copilot e finanças. Ser elegível não quer dizer que todos vão sair, e a Microsoft não informou quantos espera. Os números do trimestre estão no item dos balanços.</p>
+      <div class="sources"><a href="https://www.cnbc.com/technology/" target="_blank" rel="noopener noreferrer">CNBC Tecnologia</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://techstartups.com/2026/10/28/apple-unveils-first-touchscreen-macbook-pro-reversing-decades-of-resistance-to-touchscreen-laptops-starting-at-2899/" data-category="Tecnologia" data-published="2026-10-28" data-event-date="2026-10-28" data-source-url="https://techstartups.com/2026/10/28/apple-unveils-first-touchscreen-macbook-pro-reversing-decades-of-resistance-to-touchscreen-laptops-starting-at-2899/">
+      <h3>Apple lança o primeiro MacBook Pro com tela sensível ao toque</h3>
+      <div class="dates">Anúncio: 28 out 2026 · pré-venda aberta, vendas a partir de 6 nov</div>
+      <p>Tela OLED “PROLED XDR” com toque, até 2.000 nits e 120 Hz, chips M5 Pro e M5 Max e até 24 horas de bateria, rodando o macOS 27 com gestos de toque. Nos EUA, a partir de US$ 2.899 (14”) e US$ 3.399 (16”). O iPad mini com OLED, anunciado na segunda (26), também entrou em pré-venda.</p>
+      <p class="caveat">Corrige a versão de ontem desta página, que falava em tela sem OLED e sem toque com base em uma fonte atualizada durante o evento. Preço no Brasil ainda não divulgado.</p>
+      <div class="sources"><a href="https://techstartups.com/2026/10/28/apple-unveils-first-touchscreen-macbook-pro-reversing-decades-of-resistance-to-touchscreen-laptops-starting-at-2899/" target="_blank" rel="noopener noreferrer">Tech Startups</a><a href="https://pasqualepillitteri.it/pt/news/24281/evento-apple-28-outubro-macbook-pro-oled" target="_blank" rel="noopener noreferrer">Pasquale Pillitteri (iPad mini)</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://techstartups.com/2026/10/27/tech-news-today-october-27-2026-anthropic-files-for-ipo-63b-ai-chip-deal-microsofts-60000-employee-buyouts-and-openais-new-gpt-6-1-terra/#63b" data-category="Tecnologia" data-published="2026-10-26" data-source-url="https://techstartups.com/2026/10/27/tech-news-today-october-27-2026-anthropic-files-for-ipo-63b-ai-chip-deal-microsofts-60000-employee-buyouts-and-openais-new-gpt-6-1-terra/">
+      <h3>Bancos montam US$ 63 bilhões para os chips da Anthropic; Nvidia põe US$ 3 bilhões na Meta</h3>
+      <div class="dates">Publicação: 26 e 27 out 2026</div>
+      <p>Bank of America, Citi, Morgan Stanley e Blackstone financiam processadores e equipamentos de rede da Broadcom. Uma empresa criada para isso compra o hardware e aluga para a Anthropic, com entregas a partir de 2027. No dia seguinte, a Nvidia anunciou o aporte de US$ 3 bilhões na Meta, dentro de uma parceria maior de IA.</p>
+      <div class="sources"><a href="https://techstartups.com/2026/10/27/tech-news-today-october-27-2026-anthropic-files-for-ipo-63b-ai-chip-deal-microsofts-60000-employee-buyouts-and-openais-new-gpt-6-1-terra/" target="_blank" rel="noopener noreferrer">Tech Startups (27/10)</a><a href="https://techstartups.com/2026/10/27/nvidia-to-invest-3-billion-in-meta-as-part-of-expanded-ai-partnership-amid-zuckerbergs-97-5-billion-fundraising-push/" target="_blank" rel="noopener noreferrer">Tech Startups: Nvidia e Meta</a></div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="esportes-locais" aria-labelledby="esportes-locais-heading">
+  <h2 id="esportes-locais-heading"><span class="icon">⚽</span> Atividades esportivas em São Paulo e Guarulhos <span class="count">1 notícia</span></h2>
+  <div class="list">
+    <article class="item news-item" data-news-id="https://aeroin.net/corrida-no-aeroporto-de-guarulhos-tera-novo-percurso-nova-arena-e-novas-experiencias-reporta-a-organizacao-do-evento/" data-category="Esportes locais" data-published="2026-10-25" data-event-date="2026-10-25" data-source-url="https://aeroin.net/corrida-no-aeroporto-de-guarulhos-tera-novo-percurso-nova-arena-e-novas-experiencias-reporta-a-organizacao-do-evento/">
+      <h3>Corrida: Airport Run no Aeroporto de Guarulhos, com percurso novo de 6 km</h3>
+      <div class="dates">Prova: 25 out 2026, 8h30 · Cumbica, Guarulhos</div>
+      <p>Corrida e caminhada dentro do aeroporto, com arena nova; as inscrições esgotaram 48 horas depois de abertas. Organização da FUSE Eventos Esportivos.</p>
+      <p class="caveat">Vencedores e público ainda não publicados.</p>
+      <div class="sources"><a href="https://aeroin.net/corrida-no-aeroporto-de-guarulhos-tera-novo-percurso-nova-arena-e-novas-experiencias-reporta-a-organizacao-do-evento/" target="_blank" rel="noopener noreferrer">Aeroin</a></div>
+    </article>
+  </div>
+  <p class="section-note">No futebol, nenhum jogo dos grandes na capital desde domingo: na quarta (28), Palmeiras 0 x 0 Santos na Vila Belmiro (70 pontos, vice-líder pelo saldo) e Bahia 3 x 2 São Paulo, de virada, em Salvador (o São Paulo está em 10º, com 43). Hoje (30), às 20h, Corinthians x Mirassol na Neo Química Arena, com Sportv e Premiere. A final da Libertadores, Palmeiras x Estudiantes, é em 28/11, em Montevidéu.</p>
+</section>
+
+<section class="section" id="feiras-locais" aria-labelledby="feiras-locais-heading">
+  <h2 id="feiras-locais-heading"><span class="icon">◈</span> Feiras em São Paulo e Guarulhos <span class="count">3 feiras</span></h2>
+  <div class="list">
+    <article class="item news-item" data-news-id="https://catracalivre.com.br/gira/festival-nordestino-do-ctn-sao-paulo-programacao-2026/" data-category="Feiras locais" data-published="2026-10-25" data-event-date="2026-10-25" data-source-url="https://catracalivre.com.br/gira/festival-nordestino-do-ctn-sao-paulo-programacao-2026/">
+      <h3>Festival Nordestino do CTN encerrou no domingo</h3>
+      <div class="dates">Fins de semana de 8 a 25 out 2026 · Bairro do Limão</div>
+      <p>Comida nordestina, shows e cultura de cada estado; no último fim de semana, Ceará no sábado (Raquel dos Teclados e Banda Encantus) e Alagoas e Sergipe no domingo. Entrada gratuita, nos 35 anos do CTN.</p>
+      <p class="caveat">Sem balanço de público publicado.</p>
+      <div class="sources"><a href="https://catracalivre.com.br/gira/festival-nordestino-do-ctn-sao-paulo-programacao-2026/" target="_blank" rel="noopener noreferrer">Catraca Livre</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://distritoanhembi.com.br/?p=16767" data-category="Feiras locais" data-published="2026-10-28" data-event-date="2026-10-28" data-source-url="https://distritoanhembi.com.br/?p=16767">
+      <h3>AI Brasil Experience terminou ontem no Distrito Anhembi</h3>
+      <div class="dates">Feira e congresso: 28 e 29 out 2026 · Pavilhões 2 e 3</div>
+      <p>Dois dias de palestras, demonstrações e oficinas práticas de IA aplicada a negócios, marketing e vendas, educação e trabalho. É a segunda edição; a primeira mirava 20 mil visitantes.</p>
+      <p class="caveat">Preços de ingresso e programação completa não conferidos; ver aibrasilexperience.com.</p>
+      <div class="sources"><a href="https://distritoanhembi.com.br/?p=16767" target="_blank" rel="noopener noreferrer">Distrito Anhembi</a><a href="https://visitesaopaulo.com/evento/ai-brasil-experience-2026-2026/" target="_blank" rel="noopener noreferrer">Visite São Paulo</a></div>
+    </article>
+    <article class="item news-item" data-news-id="https://distritoanhembi.com.br/en/calendar/#beauty-expo-2026" data-category="Feiras locais" data-published="2026-10-28" data-event-date="2026-10-30" data-source-url="https://distritoanhembi.com.br/en/calendar/">
+      <h3>Beauty Expo começa hoje (30) e vai até domingo (1º) no Distrito Anhembi</h3>
+      <div class="dates">Feira: 30 out a 1º nov 2026</div>
+      <p>Feira de beleza no fim de semana do feriado de Finados. No domingo (1º), o Sambódromo recebe um Feirão AutoShow de carros.</p>
+      <p class="caveat">Horários e preço de entrada não conferidos.</p>
+      <div class="sources"><a href="https://distritoanhembi.com.br/en/calendar/" target="_blank" rel="noopener noreferrer">Agenda do Distrito Anhembi</a><a href="https://unedestinos.com.br/calendario-de-eventos/" target="_blank" rel="noopener noreferrer">Unedestinos</a></div>
+    </article>
+  </div>
+  <p class="section-note">Nenhuma feira em Guarulhos verificada na janela. Um portal cita o Salão do Automóvel no Anhembi de 30/10 a 7/11, mas ele não aparece na agenda oficial do pavilhão.</p>
+</section>
+
+</div>
+<p class="note">As datas indicam quando a notícia foi publicada e, separadamente, quando a luta, exposição ou outro evento ocorre. Horários de eventos estão em Brasília quando indicado. Onde a fonte é um agregador citando outro veículo, o veículo original está nomeado. Links abrem as fontes consultadas.</p>
+</main>
+</body>
+</html>

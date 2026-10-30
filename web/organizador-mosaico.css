@@ -1,0 +1,133 @@
+:root{--mosaic-ink:#302f40;--mosaic-muted:#928b9b;--mosaic-purple:#6749a2;--mosaic-line:#eeeaf1}
+body{background:#f5f3f7;color:var(--mosaic-ink);font-family:Arial,system-ui,sans-serif}
+.app{display:block;max-width:1500px;min-height:100vh;margin:auto;padding:26px 32px;background:transparent}
+.side{position:static;display:flex;flex-direction:row;align-items:center;gap:6px;width:auto;height:auto;padding:14px 20px;background:#fff;border:0;border-radius:15px;box-shadow:0 8px 22px #342d4608}
+.logo{font-size:21px;font-weight:900;letter-spacing:-1px;color:var(--mosaic-ink);margin:0 auto 0 0;white-space:nowrap}
+.logo:first-letter{color:#e26f68;font-size:21px}
+.side .nav{font-size:11px;font-weight:700;color:#817e90;border-radius:9px;padding:9px 11px;margin:0;white-space:nowrap;width:auto;text-align:center}
+.side .nav:before{content:none}
+.side .nav.active{background:#f1eaf8;color:#865ca6}
+.side .hint{display:none}
+.main{padding:33px 2px 62px;max-width:none;width:100%}
+.date{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#a098aa;margin-left:2px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:7px 2px 23px}
+.head h1{font-size:31px;letter-spacing:-1px;color:var(--mosaic-ink);margin:0 0 5px}
+.head .muted{color:#9893a1;font-size:12px}
+.add,.save{background:var(--mosaic-purple);color:white;border-radius:9px;padding:11px 15px;font-size:12px;font-weight:800;box-shadow:0 5px 12px #6749a226}
+.day-nav{display:flex;justify-content:flex-end;gap:6px;margin:0 2px 15px}
+.day-nav button{border:1px solid #e6e0eb;background:#fff;color:#795d99;border-radius:8px;font-size:11px;font-weight:700;padding:8px 10px}
+.day-nav .today-button{background:#eee5f9;border-color:#e1d3f3;color:#72519b}
+.day-nav strong{color:#70687c;font-size:11px;min-width:170px}
+.mosaic-welcome{display:flex;justify-content:space-between;align-items:center;min-height:135px;overflow:hidden;background:#e8ddfb;border-radius:16px;padding:21px 28px;margin:0 0 15px;box-shadow:0 8px 25px #3e315409}
+.mosaic-welcome h2{font-size:23px;letter-spacing:-.5px;margin:0 0 8px}
+.mosaic-welcome p{font-size:12px;line-height:1.5;color:#766589;margin:0;max-width:460px}
+.mosaic-welcome-shape{width:105px;height:105px;border:17px solid #bba0ec;border-radius:30px;transform:rotate(24deg);flex:none;margin-right:22px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin:0 0 15px}
+.stat,.card{background:#fff;border:1px solid var(--mosaic-line);border-radius:16px;box-shadow:0 8px 25px #3e315409}
+.stat{position:relative;min-height:127px;padding:18px 19px}
+.stat:nth-child(1){background:#d8f1dc;border-color:#d8f1dc;padding-right:93px}
+.stat:nth-child(2){background:#ffe1ce;border-color:#ffe1ce}
+.stat:nth-child(3){background:#eee2fb;border-color:#eee2fb}
+.stat:nth-child(4){background:#fff;border-color:var(--mosaic-line)}
+.stat small{color:#827d8b;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px}
+.stat strong{font-size:30px;letter-spacing:-1px;color:#332e3c;margin:12px 0 3px}
+.stat:nth-child(1) strong{color:#39774c}
+.stat:nth-child(2) strong{color:#a46643}
+.stat:nth-child(3) strong{color:#7958a4}
+.stat .meter{height:6px;background:#f7cba8;border-radius:8px;margin-top:12px}
+.stat .meter i{background:#d28b59;border-radius:8px}
+.mosaic-ring{position:absolute;right:17px;top:23px;width:65px;height:65px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#549866 0 0%,#a9d9b2 0% 100%)}
+.mosaic-ring b{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#d8f1dc;font-size:13px;color:#39774c}
+.layout{display:grid;grid-template-columns:minmax(0,8fr) minmax(270px,4fr);gap:15px;align-items:start}
+.layout>.card{padding:19px}
+.layout>div{display:flex;flex-direction:column;gap:15px}
+.layout>div>.card{margin-top:0!important;padding:19px}
+.card h2{font-size:16px;letter-spacing:-.2px;color:#383447}
+.sub{font-size:11px;color:#9b96a4;line-height:1.45}
+.tag-filter{border:0;margin:0 0 15px;padding:0;gap:5px}
+.tag-filter-label{color:#9d93a7;font-size:10px}
+.tag-filter button{border:0;background:#f4f2f6;color:#898093;border-radius:15px;padding:7px 10px;font-size:10px;font-weight:700}
+.tag-filter button.selected{background:#e8ddf8!important;color:#7953a0;box-shadow:none}
+.tag-filter .tag-clear{background:#e8ddf8;color:#7953a0}
+#list{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:start}
+#list .empty{grid-column:1/-1}
+.row{display:grid;grid-template-columns:17px 20px minmax(0,1fr);gap:7px;align-items:start;min-height:126px;margin:0!important;padding:14px!important;border:1px solid #eeeaf0!important;border-radius:12px;background:#fff}
+.row:not(.tag-colored):nth-child(3n+1){background:#f4effc}
+.row:not(.tag-colored):nth-child(3n+2){background:#fff0e9}
+.row:not(.tag-colored):nth-child(3n){background:#eaf7ec}
+.row.overdue{background:#fbe9e7!important;border-color:#efccc8!important}
+.row .drag-handle{grid-column:1;grid-row:1;margin:0}
+.row .check{grid-column:2;grid-row:1;margin-top:2px}
+.row .info{grid-column:3;grid-row:1;min-width:0}
+.row .name{font-size:14px;color:#393344;line-height:1.3}
+.row .meta{font-size:10px;color:#938a9a}
+.row>.tag{grid-column:2/-1;grid-row:2;justify-self:start;margin-top:0;background:#eee7f8;color:#7958a4;font-size:9px}
+.row>.card-actions{grid-column:1/-1;grid-row:3;justify-content:flex-end;flex-direction:row;margin-top:1px}
+.card-actions button{border:0;background:#ffffff8a;color:#786d86;border-radius:6px;font-size:10px}
+.card-tags{margin-top:10px}
+.card-tag{border-radius:6px;font-size:9px;padding:4px 7px}
+.task-items{border-left:2px solid #d9cbe8;margin:12px 0 0;padding-left:10px}
+.item-row{background:#ffffffaa;border-color:#ffffffc9;border-radius:6px;padding:7px 8px;color:#756d7e}
+.item-row.item-done{background:#e5f4e8;border-color:#cfe7d3}
+.add-item{color:#8365a8;font-size:10px}
+.day{background:#f5f3f7;color:#a39baa;border-radius:7px;font-size:9px}
+.day b{color:#625c6d}
+.day.sel{background:#e9ddf9;color:#7c5eaa}
+.week{gap:4px}
+#focus{color:#6f6579}
+.layout .bar{background:#eeeaf1}
+.layout .bar i{background:#b494dc}
+.archive{margin-top:15px;padding:20px}
+#archiveList{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#archiveList .empty{grid-column:1/-1}
+.archive-entry{border:1px solid #e2ecdf;border-radius:11px;background:#f0f8f1;padding:13px;margin:0;min-width:0;flex-wrap:wrap}
+.archive-title{color:#457c51}
+.archive-meta{color:#83968a}
+.archive-entry .card-actions{width:100%;justify-content:flex-end}
+.archive-entry .archive-delete{margin-left:auto}
+.label-hidden{display:none}
+@media(max-width:1050px){.side{flex-wrap:wrap}.logo{width:100%;margin-bottom:5px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.layout{grid-template-columns:1fr}}
+@media(max-width:700px){.app{padding:12px}.side{position:static;width:auto;height:auto;display:flex;justify-content:center;padding:10px;gap:2px}.logo{width:100%;text-align:center}.side .nav{font-size:10px;padding:7px 6px}.side .nav:before{content:none}.main{padding:22px 2px 50px}.head{align-items:start}.head h1{font-size:25px}.mosaic-welcome{padding:18px;min-height:105px}.mosaic-welcome h2{font-size:19px}.mosaic-welcome-shape{width:58px;height:58px;border-width:11px;margin:0}.stats{gap:8px}.stat{padding:13px;min-height:107px}.stat:nth-child(1){padding-right:66px}.stat strong{font-size:22px}.mosaic-ring{width:45px;height:45px;right:10px;top:22px}.mosaic-ring b{width:32px;height:32px;font-size:9px}.day-nav{justify-content:center;flex-wrap:wrap}.layout>.card,.layout>div>.card,.archive{padding:15px}#list,#archiveList{grid-template-columns:1fr}}
+.mosaic-quote{margin:0}
+.mosaic-quote h2{font-style:italic}
+.mosaic-welcome-shape[hidden]{display:none}
+/* Com a foto: a faixa assume o fundo escuro da imagem (medido nas bordas dela:
+   #0a0b0b no alto, #181817 no meio, #171a1b embaixo) e a foto se dissolve nele. */
+.mosaic-welcome.com-foto{justify-content:flex-start;gap:8px;padding:0 32px 0 0;min-height:170px;cursor:pointer;user-select:none}
+.mosaic-welcome.tema-cbum{background:linear-gradient(180deg,#0a0b0b 0%,#181817 55%,#171a1b 100%)}
+.mosaic-welcome.com-foto .mosaic-photo{height:170px;width:auto;max-width:48%;object-fit:cover;object-position:left center;flex:none;display:block;-webkit-mask-image:linear-gradient(90deg,#000 70%,transparent 100%);mask-image:linear-gradient(90deg,#000 70%,transparent 100%)}
+.mosaic-welcome.com-foto h2{font-size:26px}
+.mosaic-welcome.tema-cbum h2{color:#f4f1ea}
+.mosaic-welcome.tema-cbum p{color:#a7a29a}
+/* Bruce Lee: o pôster é amarelo (#ecb116) com riscos pretos (#171610) na diagonal;
+   a faixa repete os riscos no mesmo ângulo, mais ralos atrás da frase para ela ler. */
+.mosaic-welcome.tema-bruce{background:linear-gradient(90deg,#ecb116 0 48%,#ecb11600 92%),repeating-linear-gradient(-58deg,transparent 0 22px,#171610 22px 25px,transparent 25px 61px,#171610 61px 75px,transparent 75px 88px,#171610 88px 90px,transparent 90px 131px,#171610 131px 139px,transparent 139px 170px),#ecb116}
+.mosaic-welcome.tema-bruce h2{color:#171610;font-size:30px;letter-spacing:-.5px}
+.mosaic-welcome.tema-bruce p{color:#3d3410;font-weight:600}
+@media(max-width:700px){.mosaic-welcome.com-foto{min-height:120px;padding:0 16px 0 0}.mosaic-welcome.com-foto .mosaic-photo{height:120px;max-width:55%}.mosaic-welcome.com-foto h2{font-size:18px}}
+/* Faixa azul: o fundo é o tatame da foto (#0171d4 no alto, #0280e6 embaixo). */
+.mosaic-welcome.tema-faixa-azul{background:linear-gradient(180deg,#0171d4 0%,#0174da 50%,#0280e6 100%)}
+.mosaic-welcome.tema-faixa-azul h2{color:#fff;font-size:34px;font-weight:800;letter-spacing:-.5px;text-shadow:0 2px 10px #00326b55;margin:0}
+@media(max-width:700px){.mosaic-welcome.tema-faixa-azul h2{font-size:22px}}
+/* Charles do Bronx: a foto é a parte de baixo do pôster (ele de braços abertos). O fundo é o
+   preto dela (#090302) e as duas faixas de luz vermelha continuam pela faixa inteira, na mesma
+   altura: no recorte de 350 px elas ficam nas linhas 17-35 (#b4020b) e 67-87 (#a00a0c),
+   que na faixa de 170 px viram 8-17 px e 33-42 px. */
+.mosaic-welcome.tema-charlie{background:linear-gradient(180deg,#090302 0 8px,#b4020b 13px,#090302 17px 32px,#a00a0c 37px,#090302 42px 100%)}
+.mosaic-welcome.tema-charlie .mosaic-photo{max-width:60%;-webkit-mask-image:linear-gradient(90deg,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,#000 86%,transparent 100%)}
+.mosaic-welcome.tema-charlie h2{color:#f4f1ea}
+.mosaic-welcome.tema-charlie p{color:#e0444a;font-weight:600}
+@media(max-width:700px){.mosaic-welcome.tema-charlie{background:linear-gradient(180deg,#090302 0 6px,#b4020b 9px,#090302 12px 23px,#a00a0c 26px,#090302 30px 100%)}}
+/* Contagem regressiva embaixo do título (banner da faixa azul). */
+.mosaic-contagem{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:8px;color:#fff}
+.mosaic-contagem span{display:inline-flex;align-items:baseline;gap:4px}
+.mosaic-contagem b{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;text-shadow:0 2px 8px #00326b55}
+.mosaic-contagem small{font-size:12px;opacity:.85;text-transform:none;letter-spacing:0}
+.mosaic-contagem em{font-style:normal;font-size:12px;opacity:.75;margin-left:2px}
+.mosaic-contagem .contagem-hoje{font-size:28px}
+@media(max-width:700px){.mosaic-contagem{gap:9px}.mosaic-contagem b{font-size:18px}.mosaic-contagem em{display:none}}
+/* Jigoro Kano: retrato em preto e branco; a borda direita da foto é um cinza quase branco
+   (#efefef no alto, #f1f1f1 no meio, #e3e3e3 embaixo), que vira o fundo do banner. */
+.mosaic-welcome.tema-jigoro{background:linear-gradient(180deg,#efefef 0%,#f1f1f1 50%,#e3e3e3 100%)}
+.mosaic-welcome.tema-jigoro h2{color:#1d1d1d}
+.mosaic-welcome.tema-jigoro p{color:#6b6b6b}

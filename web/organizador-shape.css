@@ -1,0 +1,57 @@
+.app.shape-view .mosaic-welcome,.app.shape-view .stats,.app.shape-view .layout,.app.shape-view .archive,.app.shape-view .day-nav,.app.shape-view .tag-filter,.app.shape-view .head #add,.app.shape-view .completed-page,.app.shape-view .chats-page{display:none!important}
+.shape-page{display:grid;gap:14px;margin-top:6px}
+.shape-aba{display:grid;gap:14px}
+.shape-aba[hidden]{display:none}
+.shape-abas{display:flex;gap:6px}
+.shape-abas button{font:inherit;font-size:13px;font-weight:700;border:1px solid #dfe6df;background:#fff;color:#6f7a71;border-radius:999px;padding:8px 16px;cursor:pointer}
+.shape-abas button.on{background:#52775c;border-color:#52775c;color:#fff}
+.shape-page .card h2{font-size:16px;margin:0 0 10px}
+.shape-registro{display:flex;flex-wrap:wrap;align-items:end;gap:12px}
+.shape-registro h2{width:100%;margin-bottom:0!important}
+.shape-registro label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:700;color:#4a564d}
+.shape-registro input{font:inherit;font-weight:400;padding:9px 10px;border:1px solid #dfe6df;border-radius:8px;background:#fff;width:150px}
+.shape-registro .shape-meta{margin-left:auto}
+.shape-registro .shape-meta input{width:110px}
+.shape-aviso{background:#fff6ea;border:1px solid #f1d9b8;color:#7a5530;border-radius:12px;padding:11px 14px;font-size:12.5px;line-height:1.55}
+.shape-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.shape-card strong{font-size:22px;overflow-wrap:anywhere}
+.shape-card-meta{background:#f3eefc}
+.shape-grafico{position:relative}
+.shape-grafico-cabeca{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.shape-grafico-cabeca h2{margin:0!important}
+.shape-legenda{display:flex;gap:14px;font-size:11px;color:#6f7a71;flex-wrap:wrap}
+.shape-legenda span{display:inline-flex;align-items:center;gap:6px}
+.shape-legenda i{display:inline-block;width:18px;height:0;border-top:2px solid #52775c}
+.shape-legenda .leg-peso{width:9px;height:9px;border:0;border-radius:50%;background:#52775c}
+.shape-legenda .leg-tend{border-top:2px dashed #7c5cc4}
+.shape-legenda .leg-meta{border-top:2px dotted #c27a3a}
+.shape-svg svg{width:100%;height:auto;display:block}
+.sh-grade{stroke:#edf0ec;stroke-width:1}
+.sh-eixo{font-size:11px;fill:#8b958c}
+.sh-linha{fill:none;stroke:#52775c;stroke-width:2;stroke-linejoin:round}
+.sh-ponto{fill:#52775c;stroke:#fff;stroke-width:2}
+.sh-tend{stroke:#7c5cc4;stroke-width:2;stroke-dasharray:2 4;stroke-linecap:round}
+.sh-prev{stroke:#7c5cc4;stroke-width:2;stroke-dasharray:6 5;stroke-linecap:round}
+.sh-prev-ponto{fill:#fff;stroke:#7c5cc4;stroke-width:2}
+.sh-meta{stroke:#c27a3a;stroke-width:1.5;stroke-dasharray:1 4;stroke-linecap:round}
+.sh-rotulo{font-size:11.5px;font-weight:700;fill:#4a564d}
+.sh-mira{stroke:#b9c2ba;stroke-width:1}
+.sh-alvo{fill:transparent;cursor:crosshair}
+.shape-dica{position:absolute;top:52px;background:#29392e;color:#fff;font-size:12px;line-height:1.5;border-radius:8px;padding:7px 10px;pointer-events:none;min-width:150px;max-width:190px}
+.shape-tabela table{width:100%;border-collapse:collapse;font-size:13px}
+.shape-tabela th{text-align:left;font-size:11px;color:#8b958c;font-weight:700;padding:6px 8px;border-bottom:1px solid #edf0ec}
+.shape-tabela td{padding:8px;border-bottom:1px solid #f1f3f0}
+.shape-tabela td.desce{color:#3f7a4f}
+.shape-tabela td.sobe{color:#a2463d}
+.shape-tabela button{font:inherit;font-size:11px;border:0;border-radius:6px;padding:5px 8px;margin-left:4px;background:#eaf2eb;color:#456b50;cursor:pointer}
+.shape-tabela .shape-excluir{background:#f9eeec;color:#a96059}
+@media(max-width:900px){.shape-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.shape-registro .shape-meta{margin-left:0}}
+@media(max-width:520px){.shape-cards{grid-template-columns:1fr}.shape-registro input{width:100%}.shape-registro label{flex:1 1 100%}}
+/* Medidas na fita no gráfico do peso: linhas discretas, eixo em cm à direita. */
+.sh-eixo-cm{fill:#9aa3b5}
+.sh-fita{fill:none;stroke-width:1.5;stroke-linejoin:round;opacity:.8}
+.sh-fita-ponto{stroke:#fff;stroke-width:1.5}
+.sh-fita-cintura{stroke:#8094b8}
+.sh-fita-ponto.sh-fita-cintura{fill:#8094b8}
+.shape-legenda-fita{display:contents}
+.shape-legenda .leg-fita.sh-fita-cintura{border-top:1.5px solid #8094b8}

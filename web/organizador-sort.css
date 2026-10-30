@@ -1,0 +1,17 @@
+.task-items{border-left:2px solid #dce9de;padding-left:11px;margin:10px 0 2px 4px}
+.items-list{display:flex;flex-direction:column;gap:3px}
+.item-row{background:#f7faf7;border:1px solid #e1eae2;border-radius:7px;padding:7px 8px;margin:2px 0;min-height:32px}
+.item-row+.item-row{margin-top:3px}
+.item-row.item-done{background:#eef6ef;border-color:#d4e6d6}
+.drag-handle{display:inline-flex;align-items:center;justify-content:center;flex:none;width:19px;height:24px;border-radius:5px;color:#98ab9a;font-size:15px;line-height:1;cursor:grab;user-select:none;touch-action:none}
+.drag-handle:hover{background:#e8f0e9;color:#52775c}
+.drag-handle:active{cursor:grabbing}
+.card-drag-handle{align-self:center;margin-right:2px}
+/* A alça do item tem o mesmo tamanho da alça do card. O "span.drag-handle" é de propósito:
+   a regra do nome do item (.item-row > span:not(.item-actions){flex:1}, em organizador-extra.css)
+   também pegava a alça, que esticava e dividia a linha com o nome. */
+.item-row>span.drag-handle{flex:none;width:19px;height:24px;font-size:15px;align-self:center}
+.dragging{opacity:.42}
+.drag-before{box-shadow:inset 0 3px 0 #5d9268}
+.drag-after{box-shadow:inset 0 -3px 0 #5d9268}
+.archive-entry .drag-handle{margin-top:1px}

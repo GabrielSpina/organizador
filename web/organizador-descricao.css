@@ -1,0 +1,3 @@
+.description-field textarea{width:100%;min-height:78px;resize:vertical;border:1px solid #dfe6df;border-radius:8px;padding:10px;font:13px Arial,system-ui,sans-serif;color:#302f40;background:#fff;line-height:1.45}
+.description-field textarea:focus{outline:2px solid #d9c8ef;border-color:#9b77c3}
+.description-field .description-hint{display:block;color:#9b93a2;font-size:10px;margin-top:5px}

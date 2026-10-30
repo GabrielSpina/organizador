@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel do trabalho</title>
+<!--
+  PAINEL DO TRABALHO — a janela que fica aberta ao lado do chat.
+
+  Lê `painel.json` desta mesma pasta a cada 2 s e redesenha. Quem escreve o
+  JSON é o Claude, conforme o trabalho anda: nada aqui conhece o assunto.
+
+  Não precisou mexer no servidor.py: todo GET fora de /api/ é servido de web/,
+  e a resposta já vai com Cache-Control: no-store — então o polling nunca pega
+  versão velha.
+
+  As cores são os tokens do padrão da casa (assets/design/tokens.css do
+  sis_risco_cred_liquid), claro e escuro. Nenhum hex novo foi inventado.
+-->
+<style>
+  :root{
+    --marca:#f6921e; --lane:#e8ecf1; --sup:#ffffff; --sup-2:#f2f4f7;
+    --linha:#dde3ea; --linha-forte:#c9d1db;
+    --ink:#0f1c2b; --ink-2:#435063; --ink-3:#5b6778; --ink-4:#8a94a2;
+    --pri:#15304e;
+    --ok:#0f6d3d; --ok-bg:#e1f2e8; --ok-dot:#22a061;
+    --at:#835400; --at-bg:#fbefcf; --at-dot:#dc9b0c;
+    --er:#b42318; --er-bg:#fde6e3; --er-dot:#dc3a2e;
+    --ne:#465264; --ne-bg:#e6eaf0; --ne-dot:#8d98a7;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --lane:#0f1319; --sup:#161b23; --sup-2:#1d232c;
+      --linha:#242b36; --linha-forte:#333c49;
+      --ink:#e6eaf0; --ink-2:#b0b9c5; --ink-3:#8b95a2; --ink-4:#66707d;
+      --pri:#2d67a3;
+      --ok:#5fca92; --ok-bg:rgba(95,202,146,.12); --ok-dot:#3cb574;
+      --at:#ebbd57; --at-bg:rgba(235,189,87,.12); --at-dot:#e1a72d;
+      --er:#f4877e; --er-bg:rgba(244,135,126,.13); --er-dot:#ec6359;
+      --ne:#a5afbc; --ne-bg:rgba(165,175,188,.11); --ne-dot:#78828f;
+    }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:14px 16px 28px;
+    background:var(--lane); color:var(--ink);
+    font:400 13px/1.5 'Segoe UI Variable Text','Segoe UI',system-ui,sans-serif;
+  }
+  .topo{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:12px}
+  h1{font-size:22px; font-weight:600; margin:0; letter-spacing:-.2px}
+  .pulso{
+    width:7px; height:7px; border-radius:50%; background:var(--ne-dot);
+    flex:0 0 auto; align-self:center; transition:background .2s;
+  }
+  .pulso.vivo{background:var(--ok-dot)}
+  .pulso.morto{background:var(--er-dot)}
+  .selo{font-size:11px; color:var(--ink-3); margin-left:auto; text-align:right}
+  .bloco{
+    background:var(--sup); border:1px solid var(--linha); border-radius:8px;
+    padding:12px 14px; margin-bottom:10px;
+  }
+  .bloco h2{
+    font-size:12px; font-weight:600; color:var(--ink-3); margin:0 0 8px;
+    letter-spacing:.3px;
+  }
+  .agora{font-size:16px; font-weight:500; line-height:1.45}
+  .grade{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px}
+  .num{background:var(--sup-2); border-radius:6px; padding:9px 11px}
+  .num .r{font-size:11px; color:var(--ink-3); display:block; margin-bottom:3px}
+  .num .v{font-size:16px; font-weight:600; font-variant-numeric:tabular-nums; display:block}
+  .num .n{font-size:11px; color:var(--ink-4); display:block; margin-top:3px}
+  /* "layout": "linhas" no JSON: cards EMPILHADOS, um por linha, o nome em evidencia */
+  .grade.linhas{display:flex; flex-direction:column; gap:10px}
+  .grade.linhas .num{padding:14px 18px; border-left:4px solid var(--pri)}
+  .grade.linhas .num .r{font-size:20px; font-weight:600; color:var(--ink); margin-bottom:6px}
+  .grade.linhas .num .v{font-size:15px; font-weight:500}
+  .grade.linhas .num .n{font-size:14px; color:var(--ink-3); margin-top:4px}
+  ul{list-style:none; margin:0; padding:0}
+  li{
+    display:flex; gap:9px; align-items:flex-start;
+    padding:6px 0; border-top:1px solid var(--linha);
+  }
+  li:first-child{border-top:0}
+  .pt{width:7px; height:7px; border-radius:50%; margin-top:6px; flex:0 0 auto; background:var(--ne-dot)}
+  .pt.ok{background:var(--ok-dot)} .pt.at{background:var(--at-dot)}
+  .pt.er{background:var(--er-dot)} .pt.ne{background:var(--ne-dot)}
+  .hora{font-size:11px; color:var(--ink-4); font-variant-numeric:tabular-nums; flex:0 0 auto; margin-top:1px}
+  .txt{flex:1; min-width:0}
+  .com{font-size:11px; color:var(--ink-3)}
+  .aviso{background:var(--at-bg); border-left:3px solid var(--at-dot); border-radius:0 6px 6px 0; padding:9px 11px; margin-bottom:7px; color:var(--ink)}
+  .vazio{color:var(--ink-4); font-size:13px; padding:18px 0; text-align:center}
+  code{background:var(--sup-2); border-radius:4px; padding:1px 5px; font:12px 'Cascadia Mono',Consolas,monospace}
+  b,strong{font-weight:600}
+</style>
+</head>
+<body>
+  <div class="topo">
+    <span class="pulso" id="pulso" title="verde: lendo; vermelho: sem contato"></span>
+    <h1 id="titulo">Painel do trabalho</h1>
+    <span class="selo" id="selo">lendo…</span>
+  </div>
+  <div id="corpo"><div class="vazio">Esperando o primeiro dado…</div></div>
+
+<script>
+// O JSON é a fonte; esta página não sabe de assunto nenhum.
+const PASSO = 2000;                       // de quanto em quanto relê
+// Um painel por chat: ?p=movimentacao lê painel-movimentacao.json. Sem ?p= é o
+// painel.json de sempre -- dois chats escrevendo no mesmo arquivo se apagariam.
+const NOME = (new URLSearchParams(location.search).get("p") || "").replace(/[^a-z0-9_-]/gi, "");
+const ARQUIVO = NOME ? `painel-${NOME}.json` : "painel.json";
+let assinatura = "", ultimaOk = 0;
+
+const esc = t => String(t ?? "").replace(/[&<>"]/g, c =>
+  ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+
+// negrito, itálico e `código` — o mínimo para o texto respirar, sem markdown inteiro
+const rico = t => esc(t)
+  .replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>")
+  .replace(/`([^`]+)`/g, "<code>$1</code>");
+
+const estadoValido = e => ["ok","at","er","ne"].includes(e) ? e : "ne";
+
+function bloco(titulo, dentro){
+  return dentro ? `<section class="bloco"><h2>${esc(titulo)}</h2>${dentro}</section>` : "";
+}
+
+function desenhar(d){
+  document.getElementById("titulo").textContent = d.titulo || "Painel do trabalho";
+  document.title = d.titulo ? d.titulo + " — painel" : "Painel do trabalho";
+
+  let html = "";
+
+  if (d.agora) html += bloco("Agora", `<div class="agora">${rico(d.agora)}</div>`);
+
+  if (d.numeros?.length) html += bloco(d.titulo_numeros || "Números", `<div class="grade${d.layout === "linhas" ? " linhas" : ""}">` + d.numeros.map(n =>
+    `<div class="num"><span class="r">${esc(n.rotulo)}</span>` +
+    `<span class="v">${esc(n.valor)}</span>` +
+    (n.nota ? `<span class="n">${esc(n.nota)}</span>` : "") + `</div>`).join("") + `</div>`);
+
+  if (d.avisos?.length) html += bloco("O que vai morder",
+    d.avisos.map(a => `<div class="aviso">${rico(a.texto ?? a)}</div>`).join(""));
+
+  if (d.pendencias?.length) html += bloco("Em aberto", `<ul>` + d.pendencias.map(p =>
+    `<li><span class="pt at"></span><span class="txt">${rico(p.texto ?? p)}` +
+    (p.com ? ` <span class="com">· com ${esc(p.com)}</span>` : "") + `</span></li>`).join("") + `</ul>`);
+
+  if (d.decisoes?.length) html += bloco("Decidido e medido", `<ul>` + d.decisoes.map(x =>
+    `<li><span class="pt ${estadoValido(x.estado)}"></span>` +
+    (x.hora ? `<span class="hora">${esc(x.hora)}</span>` : "") +
+    `<span class="txt">${rico(x.texto ?? x)}</span></li>`).join("") + `</ul>`);
+
+  document.getElementById("corpo").innerHTML =
+    html || `<div class="vazio">Nada no painel ainda.</div>`;
+}
+
+function selo(){
+  const p = document.getElementById("pulso");
+  const s = document.getElementById("selo");
+  if (!ultimaOk){ return; }
+  const seg = Math.round((Date.now() - ultimaOk) / 1000);
+  // Sem contato por 15 s: a pessoa precisa saber que a tela congelou, em vez de
+  // olhar para um dado velho achando que é o de agora.
+  const perdido = seg > 15;
+  p.className = "pulso " + (perdido ? "morto" : "vivo");
+  s.textContent = perdido
+    ? `sem contato com o organizador há ${seg} s`
+    : `lido há ${seg} s`;
+}
+
+async function ler(){
+  try{
+    const r = await fetch(ARQUIVO, { cache: "no-store" });
+    if (!r.ok) throw new Error(r.status);
+    const texto = await r.text();
+    ultimaOk = Date.now();
+    if (texto !== assinatura){            // só redesenha quando mudou de verdade
+      assinatura = texto;
+      desenhar(JSON.parse(texto));
+    }
+  }catch(e){ /* o selo mostra que parou; o conteúdo antigo fica à vista */ }
+  selo();
+}
+
+// Se o proprio HTML mudar (layout novo), recarrega sozinho: ninguem precisa de F5.
+let html_assinatura = "";
+async function vigiarHtml(){
+  try{
+    const t = await (await fetch(location.pathname, { cache: "no-store" })).text();
+    if (html_assinatura && t !== html_assinatura) location.reload();
+    html_assinatura = t;
+  }catch(e){}
+}
+
+ler();
+vigiarHtml();
+setInterval(ler, PASSO);
+setInterval(vigiarHtml, 5000);
+setInterval(selo, 1000);
+</script>
+</body>
+</html>

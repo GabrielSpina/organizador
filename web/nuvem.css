@@ -1,0 +1,19 @@
+/* Login uma vez por máquina e o selo "salvo na nuvem" (nuvem.js). */
+.app[hidden]{display:none!important}
+.nuvem-login{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:16px;background:#f5f3f7;z-index:100}
+.nuvem-login-caixa{background:#fff;border:1px solid #eeeaf1;border-radius:16px;box-shadow:0 8px 25px #3e315412;padding:26px;width:min(460px,100%);font-size:14px;color:#302f40;line-height:1.5}
+.nuvem-login-caixa h1{font-size:21px;margin:0 0 10px}
+.nuvem-login-caixa label{display:block;font-weight:700;font-size:12px;margin:14px 0 0}
+.nuvem-login-caixa input{display:block;width:100%;margin-top:6px;padding:10px;border:1px solid #dcd6e2;border-radius:9px;font:inherit}
+.nuvem-login-caixa button{margin-top:14px;width:100%;border:0;border-radius:9px;padding:11px;background:#6c4fa3;color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.nuvem-login-caixa button:disabled{opacity:.6;cursor:wait}
+.nuvem-login-caixa details{margin-top:16px;font-size:13px;color:#5d5868}
+.nuvem-login-caixa summary{cursor:pointer;font-weight:700}
+.nuvem-login-caixa ol{padding-left:20px}
+.nuvem-login-caixa a{color:#6c4fa3}
+.nuvem-login-erro{background:#fbe9e7;color:#8a3a32;border-radius:8px;padding:8px 10px;font-size:13px}
+.nuvem-selo{position:fixed;left:12px;bottom:12px;z-index:50;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #e6e2ea;border-radius:999px;padding:5px 6px 5px 12px;font-size:12px;color:#5d6b5f;box-shadow:0 4px 14px #3e315414}
+.nuvem-selo[data-situacao=salvando]{color:#7a6a2f}
+.nuvem-selo[data-situacao=erro]{color:#a2463d;border-color:#ecd0cc}
+.nuvem-sair{border:0;background:#f3f1f5;color:#6f6a77;border-radius:999px;padding:4px 9px;font:inherit;font-size:11px;cursor:pointer}
+.nuvem-sair:hover{background:#ebe6f0}

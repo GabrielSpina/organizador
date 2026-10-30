@@ -1,0 +1,26 @@
+.section[hidden],section[data-news-section][hidden]{display:none!important}
+.news-item{position:relative;cursor:pointer;transition:box-shadow .18s,transform .18s}
+.news-item:hover{box-shadow:0 9px 26px #6749a21c;transform:translateY(-2px)}
+.news-item:focus-visible{outline:2px solid #8c65bd;outline-offset:3px}
+.news-agenda-add{display:inline-flex;align-items:center;gap:5px;border:1px solid #d9caed;background:#f2ebfa;color:#75559d;border-radius:8px;padding:7px 10px;margin-top:12px;font:700 11px Arial,sans-serif;cursor:pointer}
+.news-agenda-add.saved{background:#e2f3e5;border-color:#cce7d2;color:#4f8b5d}
+.news-agenda-tab{position:fixed;right:0;top:45%;z-index:1002;border:0;border-radius:11px 0 0 11px;background:#6749a2;color:#fff;padding:15px 11px;box-shadow:0 8px 28px #3d275241;font:800 12px Arial,sans-serif;writing-mode:vertical-rl;cursor:pointer;min-height:116px}
+.news-agenda-tab b{display:inline-grid;place-items:center;min-width:21px;height:21px;background:#ffffff32;border-radius:12px;margin-top:7px;writing-mode:horizontal-tb;font-size:11px}
+.news-agenda-panel{position:fixed;right:0;top:0;bottom:0;z-index:1003;width:min(370px,92vw);background:#fff;box-shadow:-12px 0 40px #3223422b;display:flex;flex-direction:column;transform:translateX(102%);transition:transform .25s ease;visibility:hidden}
+.news-agenda-panel.open{transform:translateX(0);visibility:visible}
+.news-agenda-header{display:flex;justify-content:space-between;align-items:flex-start;padding:22px 20px 16px;border-bottom:1px solid #eee9f3}
+.news-agenda-header small{display:block;text-transform:uppercase;letter-spacing:1px;font-size:10px;font-weight:800;color:#9f89ba;margin-bottom:5px}
+.news-agenda-header h2{font-size:21px;letter-spacing:-.5px;margin:0;color:#342d40}
+.news-agenda-close{border:0;background:#f1ebf7;color:#715592;border-radius:8px;width:31px;height:31px;font-size:18px;cursor:pointer}
+.news-agenda-sub{padding:11px 20px;color:#92899c;font-size:11px;line-height:1.4}
+.news-agenda-list{overflow:auto;padding:5px 16px 20px;flex:1}
+.news-agenda-group{font-size:10px;letter-spacing:1px;font-weight:800;text-transform:uppercase;color:#9987aa;margin:14px 4px 9px}
+.news-agenda-entry{border:1px solid #ebe5f0;border-radius:11px;padding:13px;margin-bottom:9px;background:#fcfafe}
+.news-agenda-category{font-size:10px;color:#7f5fa6;font-weight:800;margin-bottom:5px}
+.news-agenda-title{display:block;font-size:13px;line-height:1.35;font-weight:700;color:#3d3449}
+.news-agenda-date{font-size:10px;color:#9b91a5;margin-top:7px}
+.news-agenda-actions{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px}
+.news-agenda-actions a{color:#7655a0;text-decoration:none;font-size:11px;font-weight:700}
+.news-agenda-remove{border:0;background:#f6eceb;color:#ac6a63;border-radius:6px;padding:5px 8px;font-size:10px;cursor:pointer}
+.news-agenda-empty{border:1px dashed #e1d6eb;border-radius:11px;padding:20px;color:#9d91a7;font-size:12px;line-height:1.5;margin:10px 2px}
+@media(max-width:650px){.news-agenda-tab{top:auto;bottom:18px;right:12px;min-height:0;writing-mode:horizontal-tb;border-radius:20px;padding:11px 15px}.news-agenda-tab b{display:inline-grid;margin:0 0 0 6px}.news-agenda-panel{width:min(400px,100vw)}}

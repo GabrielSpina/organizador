@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Exportar organizador antigo</title>
+<style>
+body{margin:0;background:#f5f7f3;color:#25332a;font:15px "Segoe UI",system-ui,sans-serif}
+main{max-width:640px;margin:40px auto;padding:0 16px}
+.card{background:#fff;border:1px solid #e7ece6;border-radius:14px;padding:22px}
+h1{font-size:22px;margin:0 0 8px}
+p,li{line-height:1.55;color:#4b574e}
+button{font:inherit;font-weight:650;background:#52775c;color:#fff;border:0;border-radius:8px;padding:10px 16px;cursor:pointer}
+code{background:#f2f4f1;border-radius:4px;padding:1px 5px}
+#resumo{margin-top:14px;font-size:13px;color:#5d685f}
+</style>
+</head>
+<body>
+<main><div class="card">
+<h1>Levar os dados do organizador antigo</h1>
+<p>O organizador antigo guardava tudo no navegador. Esta página lê esses dados e gera um arquivo <code>organizador_antigo.json</code>.</p>
+<ol>
+  <li>Abra esta página <b>dando dois cliques nela</b>, no <b>mesmo navegador</b> em que você usava o organizador antigo.</li>
+  <li>Clique em “Baixar dados”.</li>
+  <li>No organizador novo, aba <b>💬 Chats</b>, clique em “Importar dados do organizador antigo” e escolha o arquivo.</li>
+</ol>
+<button id="baixar" type="button">Baixar dados</button>
+<div id="resumo"></div>
+</div></main>
+<script>
+const CHAVES=['ritmo.tasks.v1','ritmo.history.v1','ritmo.tags.v1','ritmo.archive-order.v1','organizador.projects.v1','organizador.noticias.agenda.v1','organizador.noticias.agenda.aberta.v1'];
+function ler(){const dados={};for(const chave of CHAVES){const valor=localStorage.getItem(chave);if(valor!==null)dados[chave]=valor}return dados}
+const dados=ler(),contar=chave=>{try{const v=JSON.parse(dados[chave]||'[]');return Array.isArray(v)?v.length:'—'}catch{return '—'}};
+document.querySelector('#resumo').textContent=Object.keys(dados).length?`Encontrado: ${contar('ritmo.tasks.v1')} cards, ${contar('ritmo.history.v1')} registros de conclusão, ${contar('ritmo.tags.v1')} tags, ${contar('organizador.projects.v1')} projetos, ${contar('organizador.noticias.agenda.v1')} notícias guardadas.`:'Nenhum dado do organizador antigo neste navegador. Confira se é o mesmo navegador e se a página foi aberta com dois cliques (endereço começando com file://).';
+document.querySelector('#baixar').onclick=()=>{
+  const link=document.createElement('a');
+  link.href=URL.createObjectURL(new Blob([JSON.stringify(dados,null,1)],{type:'application/json'}));
+  link.download='organizador_antigo.json';link.click();
+};
+</script>
+</body>
+</html>

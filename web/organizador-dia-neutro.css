@@ -1,0 +1,8 @@
+.dia-neutro{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 10px;font-size:12px;color:#6f7a71}
+.dia-neutro label{display:inline-flex;align-items:center;gap:6px;cursor:pointer;padding:4px 9px;border:1px solid #e3e8e3;border-radius:999px;background:#fff;font-weight:650}
+.dia-neutro label small{font-weight:400;color:#98a199}
+.dia-neutro input{margin:0;accent-color:#7d877e}
+.dia-neutro.ligado label{background:#eef0f2;border-color:#c9ced3;color:#4f5a61}
+.dia-neutro-aviso{color:#6b7480;font-style:italic}
+#week .day.neutro{opacity:.45;text-decoration:line-through}
+#chart .col.neutro .bar{background:repeating-linear-gradient(135deg,#eef0ee 0 4px,#e0e4e0 4px 8px)}

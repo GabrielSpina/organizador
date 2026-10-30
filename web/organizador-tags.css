@@ -1,0 +1,22 @@
+.tag-filter{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:12px 0 16px;padding:10px 0;border-top:1px solid #edf0ec;border-bottom:1px solid #edf0ec}
+.tag-filter-label{font-size:11px;font-weight:700;color:#87948a;margin-right:2px}
+.tag-filter button{font-size:11px;border:1px solid #e0e8e0;background:#fff;color:#677b6b;border-radius:18px;padding:5px 9px}
+.tag-filter button.selected{font-weight:700;box-shadow:inset 0 0 0 1px currentColor}
+.tag-filter .tag-clear{background:#eef4ee;color:#4e7056}
+.card-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.card-tag{font-size:10px;font-weight:700;padding:3px 7px;border-radius:12px;border:1px solid transparent}
+.row.tag-colored{padding:12px 10px;margin:4px 0;border-radius:8px}
+.row.overdue.tag-colored{background:#fbe9e7!important;border-left-color:#d77970!important}
+.tag-picker{border-top:1px solid #edf0ec;margin-top:14px;padding-top:12px}
+.tag-picker>label{display:block;font-size:12px;font-weight:700;margin-bottom:8px}
+.tag-options{display:flex;flex-wrap:wrap;gap:7px}
+.tag-option{display:flex;align-items:center;gap:5px;border:1px solid #e0e8e0;border-radius:8px;padding:5px 7px;font-size:11px;cursor:pointer}
+.tag-option input[type=checkbox]{accent-color:#52775c}
+.tag-option input[type=color]{width:21px;height:21px;border:0;background:transparent;padding:0;cursor:pointer}
+.tag-create{display:flex;gap:6px;margin-top:10px}
+.tag-create input[type=text]{flex:1;min-width:0;border:1px solid #dfe6df;border-radius:7px;padding:8px;font-size:12px}
+.tag-create input[type=color]{width:34px;height:34px;padding:2px;border:1px solid #dfe6df;border-radius:7px;background:white}
+.tag-create button{background:#eaf2eb;color:#456b50;border-radius:7px;padding:7px 9px;font-size:11px;font-weight:700}
+.tag-picker small{display:block;color:#8c988e;margin-top:7px;font-size:10px}
+.archive-entry .card-tags{margin-top:5px}
+.archive-entry[hidden],.tag-filter[hidden]{display:none}

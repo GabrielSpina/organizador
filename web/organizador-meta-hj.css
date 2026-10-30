@@ -1,0 +1,19 @@
+.meta-hj-grupo{margin:0 0 14px;padding:12px;border-radius:14px;background:linear-gradient(180deg,#fffaf0,#fff6e2);border:1px solid #f0dca4}
+.meta-hj-cabeca{display:flex;justify-content:space-between;align-items:center;margin:0 4px 10px;color:#8a6a12;font-weight:800;font-size:13px;letter-spacing:.3px}
+.meta-hj-cabeca small{font-weight:600;color:#a88a3a;font-size:11px}
+.meta-hj-grupo .row+.row{margin-top:10px}
+#list .row.meta-hj{border:2px solid #d4a72c!important;border-left:2px solid #d4a72c!important;border-radius:12px;box-shadow:0 0 0 3px #f5dc8a59,0 6px 18px #d4a72c66!important;background:#fffdf6!important}
+.meta-hj-registro .meta-hj-dia h3{font-size:13px;margin:14px 0 6px;color:#6d5a2a}
+.meta-hj-x{background:#f9eeec!important;color:#a2463d!important}
+.meta-hj-apagar{font:inherit;font-size:11px;border:0;border-radius:6px;padding:5px 8px;background:#f5f1e6;color:#8a7a52;cursor:pointer}
+/* Projeto inteiro como meta do dia */
+.meta-hj-grupo .project-group.meta-hj-projeto{border:2px solid #d4a72c!important;box-shadow:0 0 0 3px #f5dc8a59,0 6px 18px #d4a72c66;background:#fffdf6!important}
+.meta-hj-grupo .project-group+.project-group,.meta-hj-grupo .row+.project-group,.meta-hj-grupo .project-group+.row{margin-top:10px}
+.meta-hj-projeto-botao{font:inherit;font-size:11px;font-weight:650;border:1px solid #e6dcb8;background:#fff;color:#9a7b1f;border-radius:999px;padding:3px 9px;cursor:pointer;margin-left:6px}
+.meta-hj-projeto-botao:hover{background:#fff6dd}
+.meta-hj-projeto-botao.ligada{background:#d4a72c;border-color:#d4a72c;color:#fff}
+/* Alça para mudar a ordem do projeto (organizador-projetos-ordem.js) */
+.project-drag-handle{margin-right:-2px}
+.project-group.dragging{opacity:.45}
+.project-group.drag-before{box-shadow:0 -3px 0 #7c5cc4}
+.project-group.drag-after{box-shadow:0 3px 0 #7c5cc4}
