@@ -13,7 +13,7 @@ const BANNERS=[
   {tema:'charlie',foto:'imagens/charlie.jpg',alt:'Charles do Bronx',frase:'É tempo ruim o tempo todo',autor:'Charles do Bronx'},
   {tema:'jigoro',foto:'imagens/jigoro_kano.jpg',alt:'Jigoro Kano',frase:'Conhecer-se é dominar-se, dominar-se é triunfar.',autor:'Jigoro Kano'},
   // Citação sem "autor": só a frase, entre aspas.
-  {tema:'wild',foto:'imagens/wild.jpg',alt:'Gabriel',frase:'Quem não morre, não vê Deus'},
+  {tema:'wild',foto:'imagens/wild.webp',alt:'Gabriel',frase:'Quem não morre, não vê Deus'},
 ];
 const BANNER_KEY='organizador.banner.v1';
 let bannerAtual=Math.min(Math.max(Number(localStorage.getItem(BANNER_KEY))||0,0),BANNERS.length-1);

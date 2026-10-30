@@ -131,11 +131,11 @@ body{background:#f5f3f7;color:var(--mosaic-ink);font-family:Arial,system-ui,sans
 .mosaic-welcome.tema-jigoro{background:linear-gradient(180deg,#efefef 0%,#f1f1f1 50%,#e3e3e3 100%)}
 .mosaic-welcome.tema-jigoro h2{color:#1d1d1d}
 .mosaic-welcome.tema-jigoro p{color:#6b6b6b}
-/* Wild: o banner inteiro é a parede de tábuas da foto, recriada em imagens/wild_parede.jpg
-   (tábuas com os tons medidos na parede dela, na mesma escala da foto). A foto vai inteira,
-   numa faixa mais alta, e só se dissolve na parede no último pedaço. */
-.mosaic-welcome.tema-wild{min-height:240px;background:radial-gradient(ellipse 45% 60% at 70% 50%,#2a120566,transparent 75%),url(imagens/wild_parede.jpg) left center/auto 100% repeat-x,#b06a35}
-.mosaic-welcome.tema-wild .mosaic-photo{height:240px;max-width:62%;-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent 100%);mask-image:linear-gradient(90deg,#000 82%,transparent 100%)}
+/* Wild: a pessoa recortada da foto (imagens/wild.webp, fundo transparente) sobre o azul da
+   Artesanal (#004976 → #002e4f), com o símbolo do logo grande e apagado (28%) saindo pela
+   borda direita, como marca d'água (imagens/artesanal_simbolo.png). Sem dissolver a foto. */
+.mosaic-welcome.tema-wild{min-height:240px;padding-left:40px;background:url(imagens/artesanal_simbolo.png) right -60px top -45px/auto 330px no-repeat,linear-gradient(90deg,#004976,#002e4f)}
+.mosaic-welcome.tema-wild .mosaic-photo{height:240px;max-width:45%;object-fit:contain;object-position:left bottom;align-self:flex-end;-webkit-mask-image:none;mask-image:none}
 .mosaic-welcome.tema-wild .mosaic-quote{margin-left:28px}
-.mosaic-welcome.tema-wild h2{color:#fffaf2;font-size:32px;text-shadow:0 2px 3px #2a1205cc,0 0 18px #2a1205aa}
-@media(max-width:700px){.mosaic-welcome.tema-wild{min-height:140px}.mosaic-welcome.tema-wild .mosaic-photo{height:140px}.mosaic-welcome.tema-wild h2{font-size:19px}}
+.mosaic-welcome.tema-wild h2{color:#fff;font-size:32px}
+@media(max-width:700px){.mosaic-welcome.tema-wild{min-height:140px;padding-left:16px;background-size:auto 190px,auto;background-position:right -35px top -26px,0 0}.mosaic-welcome.tema-wild .mosaic-photo{height:140px}.mosaic-welcome.tema-wild .mosaic-quote{margin-left:12px}.mosaic-welcome.tema-wild h2{font-size:19px}}
