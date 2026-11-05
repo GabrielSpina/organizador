@@ -134,8 +134,16 @@ body{background:#f5f3f7;color:var(--mosaic-ink);font-family:Arial,system-ui,sans
 /* Wild: a pessoa recortada da foto (imagens/wild.webp, fundo transparente) sobre o azul da
    Artesanal (#004976 → #002e4f), com o símbolo do logo grande e apagado (28%) saindo pela
    borda direita, como marca d'água (imagens/artesanal_simbolo.png). Sem dissolver a foto. */
-.mosaic-welcome.tema-wild{min-height:240px;padding-left:40px;background:url(imagens/artesanal_simbolo.png) right -60px top -45px/auto 330px no-repeat,linear-gradient(90deg,#004976,#002e4f)}
-.mosaic-welcome.tema-wild .mosaic-photo{height:240px;max-width:45%;object-fit:contain;object-position:left bottom;align-self:flex-end;-webkit-mask-image:none;mask-image:none}
+.mosaic-welcome.tema-wild{padding-left:40px;background:url(imagens/artesanal_simbolo.png) right -42px top -32px/auto 234px no-repeat,linear-gradient(90deg,#004976,#002e4f)}
+.mosaic-welcome.tema-wild .mosaic-photo{height:170px;max-width:45%;object-fit:contain;object-position:left bottom;align-self:flex-end;-webkit-mask-image:none;mask-image:none}
 .mosaic-welcome.tema-wild .mosaic-quote{margin-left:28px}
-.mosaic-welcome.tema-wild h2{color:#fff;font-size:32px}
-@media(max-width:700px){.mosaic-welcome.tema-wild{min-height:140px;padding-left:16px;background-size:auto 190px,auto;background-position:right -35px top -26px,0 0}.mosaic-welcome.tema-wild .mosaic-photo{height:140px}.mosaic-welcome.tema-wild .mosaic-quote{margin-left:12px}.mosaic-welcome.tema-wild h2{font-size:19px}}
+.mosaic-welcome.tema-wild h2{color:#fff}
+@media(max-width:700px){.mosaic-welcome.tema-wild{padding-left:16px;background-size:auto 165px,auto;background-position:right -30px top -22px,0 0}.mosaic-welcome.tema-wild .mosaic-photo{height:120px}.mosaic-welcome.tema-wild .mosaic-quote{margin-left:12px}}
+/* Mike Tyson: o fundo é o preto da arena (#010a0a) e as duas cordas da foto continuam pela faixa
+   inteira, na mesma altura: no recorte de 335 px a vermelha fica nas linhas 232-247 e a branca
+   nas 294-302, que na faixa de 170 px viram 118-125 px e 149-153 px (120 px: 83-88 e 105-108). */
+.mosaic-welcome.tema-tyson{background:linear-gradient(180deg,#010a0a 0 118px,#7a1214 118px 125px,#010a0a 125px 149px,#969698 149px 153px,#010a0a 153px)}
+.mosaic-welcome.tema-tyson .mosaic-photo{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent 100%);mask-image:linear-gradient(90deg,#000 80%,transparent 100%)}
+.mosaic-welcome.tema-tyson h2{color:#f4f1ea}
+.mosaic-welcome.tema-tyson p{color:#e0444a;font-weight:600}
+@media(max-width:700px){.mosaic-welcome.tema-tyson{background:linear-gradient(180deg,#010a0a 0 83px,#7a1214 83px 88px,#010a0a 88px 105px,#969698 105px 108px,#010a0a 108px)}}

@@ -14,6 +14,7 @@ const BANNERS=[
   {tema:'jigoro',foto:'imagens/jigoro_kano.jpg',alt:'Jigoro Kano',frase:'Conhecer-se é dominar-se, dominar-se é triunfar.',autor:'Jigoro Kano'},
   // Citação sem "autor": só a frase, entre aspas.
   {tema:'wild',foto:'imagens/wild.webp',alt:'Gabriel',frase:'Quem não morre, não vê Deus'},
+  {tema:'tyson',foto:'imagens/mike_tyson.jpg',alt:'Mike Tyson',frase:'Todo mundo tem um plano até levar um soco na boca',autor:'Mike Tyson'},
 ];
 const BANNER_KEY='organizador.banner.v1';
 let bannerAtual=Math.min(Math.max(Number(localStorage.getItem(BANNER_KEY))||0,0),BANNERS.length-1);
