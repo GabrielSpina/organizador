@@ -15,6 +15,7 @@ const BANNERS=[
   // Citação sem "autor": só a frase, entre aspas.
   {tema:'wild',foto:'imagens/wild.webp',alt:'Gabriel',frase:'Quem não morre, não vê Deus'},
   {tema:'tyson',foto:'imagens/mike_tyson.jpg',alt:'Mike Tyson',frase:'Todo mundo tem um plano até levar um soco na boca',autor:'Mike Tyson'},
+  {tema:'self-made',foto:'imagens/self_made_man.jpg',alt:'Estátua Self Made Man',frase:'O homem que constrói a si mesmo'},
 ];
 const BANNER_KEY='organizador.banner.v1';
 let bannerAtual=Math.min(Math.max(Number(localStorage.getItem(BANNER_KEY))||0,0),BANNERS.length-1);

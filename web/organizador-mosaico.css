@@ -146,4 +146,11 @@ body{background:#f5f3f7;color:var(--mosaic-ink);font-family:Arial,system-ui,sans
 .mosaic-welcome.tema-tyson .mosaic-photo{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent 100%);mask-image:linear-gradient(90deg,#000 80%,transparent 100%)}
 .mosaic-welcome.tema-tyson h2{color:#f4f1ea}
 .mosaic-welcome.tema-tyson p{color:#e0444a;font-weight:600}
+/* Self Made Man: a estátua (do martelo ao peito) sobre o preto da própria foto (#010101),
+   sem borda e sem dissolver. */
+.mosaic-welcome.tema-self-made{padding-left:40px;background:#010101}
+.mosaic-welcome.tema-self-made .mosaic-photo{-webkit-mask-image:none;mask-image:none}
+.mosaic-welcome.tema-self-made .mosaic-quote{margin-left:24px}
+.mosaic-welcome.tema-self-made h2{color:#f4f1ea}
+@media(max-width:700px){.mosaic-welcome.tema-self-made{padding-left:16px}.mosaic-welcome.tema-self-made .mosaic-quote{margin-left:10px}}
 @media(max-width:700px){.mosaic-welcome.tema-tyson{background:linear-gradient(180deg,#010a0a 0 83px,#7a1214 83px 88px,#010a0a 88px 105px,#969698 105px 108px,#010a0a 108px)}}
