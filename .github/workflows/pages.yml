@@ -1,4 +1,4 @@
-﻿# Publica a pasta web/ no GitHub Pages a cada envio na main.
+# Publica a pasta web/ no GitHub Pages a cada envio na main.
 name: Publicar no GitHub Pages
 on:
   push:
@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 concurrency:
