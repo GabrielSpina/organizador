@@ -1,5 +1,6 @@
 // Tag "Meta hj": o que precisa sair HOJE.
-// - os cards com a tag sobem para o topo da lista, com borda e sombra douradas;
+// - os cards com a tag sobem para o topo da lista, com borda e sombra douradas; o card que
+//   pertence a um projeto leva o projeto inteiro junto (o grupo sobe, com ele no alto);
 // - cada card guarda o dia em que recebeu a tag (metaHjDia);
 // - num dia seguinte a tag sai sozinha; se o card não foi concluído naquele dia,
 //   ele entra no registro "Metas do dia não atingidas", mostrado em Concluídos.
@@ -69,10 +70,25 @@
     const grupos=[...lista.querySelectorAll('.project-group[data-projeto]')].filter(g=>metasProjeto[g.dataset.projeto]===hoje);
     const linhas=[...lista.querySelectorAll('.row')].filter(row=>temMeta(tasks.find(t=>t.id===row.dataset.id)||{}));
     if(!linhas.length&&!grupos.length)return;
+    // Card com a tag dentro de um projeto leva o projeto inteiro junto: o grupo sobe para as
+    // metas e o card dourado vai para o alto dele. Só o card sem projeto sobe sozinho.
+    const soltas=[],gruposDoCard=[];
+    for(const row of linhas){
+      row.classList.add('meta-hj');
+      const grupo=row.closest('.project-group[data-projeto]');
+      if(!grupo){soltas.push(row);continue}
+      if(!grupos.includes(grupo)&&!gruposDoCard.includes(grupo))gruposDoCard.push(grupo);
+    }
+    for(const grupo of [...grupos,...gruposDoCard]){
+      const cards=grupo.querySelector('.project-card-list');
+      if(cards)cards.prepend(...cards.querySelectorAll(':scope > .row.meta-hj'));
+    }
     const secao=document.createElement('section');secao.className='meta-hj-grupo';
-    const partes=[linhas.length?`${linhas.length} ${linhas.length===1?'card':'cards'}`:'',grupos.length?`${grupos.length} ${grupos.length===1?'projeto':'projetos'}`:''].filter(Boolean).join(' · ');
+    const nProjetos=grupos.length+gruposDoCard.length;
+    const partes=[linhas.length?`${linhas.length} ${linhas.length===1?'card':'cards'}`:'',nProjetos?`${nProjetos} ${nProjetos===1?'projeto':'projetos'}`:''].filter(Boolean).join(' · ');
     secao.innerHTML=`<div class="meta-hj-cabeca"><span>★ Metas de hoje</span><small>${partes}</small></div>`;
-    for(const row of linhas){row.classList.add('meta-hj');secao.append(row)}
+    for(const row of soltas)secao.append(row);
+    for(const grupo of gruposDoCard)secao.append(grupo);
     for(const grupo of grupos){grupo.classList.add('meta-hj-projeto');secao.append(grupo)}
     lista.prepend(secao);
     // Grupo de projeto que ficou vazio some; os outros recontam.
