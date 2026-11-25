@@ -17,12 +17,27 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.publicacao.outputs.page_url }}
+      url: ${{ steps.publicacao.outputs.page_url || steps.publicacao2.outputs.page_url || steps.publicacao3.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
           path: web
+      # Desde 24/11/2026 o deploy às vezes procura o pacote meio segundo depois do upload e
+      # ainda não o acha ("No artifacts named github-pages"). Espera e tenta até três vezes.
+      - run: sleep 15
       - id: publicacao
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+      - if: steps.publicacao.outcome == 'failure'
+        run: sleep 30
+      - id: publicacao2
+        if: steps.publicacao.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+      - if: steps.publicacao.outcome == 'failure' && steps.publicacao2.outcome == 'failure'
+        run: sleep 60
+      - id: publicacao3
+        if: steps.publicacao.outcome == 'failure' && steps.publicacao2.outcome == 'failure'
         uses: actions/deploy-pages@v5
